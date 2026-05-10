@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRISOINS — Nutrition et Bien-être à Namur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --creme: #FDFBF8; /* Fond doux comme sur tes visuels */
+            --vert-sombre: #3E4B31; /* Le vert olive de tes feuilles */
+            --ocre: #B56A3A; /* L'ocre de ton logo */
+            --texte: #4A4641;
+        }
+
+        body { margin: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--texte); line-height: 1.6; }
+
+        /* NAVIGATION */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 15px rgba(0,0,0,0.03); }
+        .logo-area { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-area img { height: 50px; }
+        .logo-text span { display: block; font-family: 'Playfair Display', serif; font-weight: bold; color: var(--vert-sombre); font-size: 1.2rem; }
+        
+        nav a { text-decoration: none; color: var(--texte); margin-left: 30px; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--ocre); }
+        .btn-rdv { background: var(--ocre); color: white !important; padding: 12px 25px; border-radius: 50px; }
+
+        /* HERO SECTION */
+        .hero { position: relative; display: flex; align-items: center; min-height: 80vh; padding: 0 10%; overflow: hidden; }
+        .deco-lavande { position: absolute; top: 10%; right: -50px; width: 300px; opacity: 0.6; pointer-events: none; }
+
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; width: 100%; z-index: 2; }
+        
+        .hero-image { position: relative; text-align: center; }
+        .hero-image img { width: 100%; max-width: 420px; border-radius: 200px 200px 30px 30px; border: 10px solid white; box-shadow: 0 20px 40px rgba(62, 75, 49, 0.1); }
+
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--vert-sombre); line-height: 1.2; margin-bottom: 20px; }
+        .rotating-box { display: block; height: 60px; overflow: hidden; color: var(--ocre); font-style: italic; font-weight: 400; }
+        .rotating-item { display: block; transition: 0.6s ease; }
+
+        /* SECTION IDENTIFICATION (Vert Sombre) */
+        .recog { background-color: var(--vert-sombre); padding: 80px 10%; color: white; text-align: center; }
+        .recog h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px; }
+        .recog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: rgba(255,255,255,0.08); padding: 40px; border-radius: 15px; border-left: 5px solid var(--ocre); text-align: left; }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo-area">
+        <div class="logo-text"><span>NUTRISOINS</span></div>
+    </a>
+    <nav>
+        <a href="#">Ma Méthode</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+        <a href="#" class="btn-rdv">PRENDRE RDV</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="lavande.png" class="deco-lavande" alt="Déco">
+    <div class="hero-grid">
+        <div class="hero-image">
+            <img src="Michele_Renault.jpg" alt="Michèle Renault">
+        </div>
+        <div class="hero-text">
+            <h1>Retrouvez votre équilibre <br> 
+                <span class="rotating-box">
+                    <span class="rotating-item" id="rotate">Naturellement.</span>
+                </span>
+            </h1>
+            <p style="font-size: 1.2rem; max-width: 500px;">Michèle Renault, votre guide vers une nutrition bienveillante et durable à Namur.</p>
+            <br>
+            <a href="#" class="btn-rdv" style="padding: 18px 40px; font-size: 1.1rem;">Découvrir mon approche</a>
+        </div>
+    </div>
+</section>
+
+<section class="recog">
+    <h2>Vous vous reconnaissez ?</h2>
+    <div class="recog-grid">
+        <div class="card">Vous prenez du poids sans comprendre pourquoi, malgré vos efforts...</div>
+        <div class="card">Vous êtes fatigué(e) des régimes qui fonctionnent… puis échouent.</div>
+        <div class="card">Votre corps change et vous ne savez plus quoi manger pour vous sentir bien.</div>
+    </div>
+</section>
+
+<script>
+    const words = ["Naturellement.", "Durablement.", "À votre rythme.", "Sans privation."];
+    let i = 0;
+    setInterval(() => {
+        const el = document.getElementById('rotate');
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            i = (i + 1) % words.length;
+            el.innerText = words[i];
+            el.style.opacity = 1;
+            el.style.transform = 'translateY(0)';
+        }, 500);
+    }, 4000);
+</script>
+
+</body>
+</html>
