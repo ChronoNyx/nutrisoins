@@ -3,109 +3,1449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUTRISOINS — Nutrition et Bien-être à Namur</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>NUTRISOINS — Coaching Nutrition Bienveillante à Namur | Michèle Renault</title>
+    <meta name="description" content="Michèle Renault, coach en nutrition certifiée à Namur. Retrouvez votre équilibre alimentaire durablement, sans régime ni culpabilité. Consultations en présentiel et en ligne.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --creme: #FDFBF8; /* Fond doux comme sur tes visuels */
-            --vert-sombre: #3E4B31; /* Le vert olive de tes feuilles */
-            --ocre: #B56A3A; /* L'ocre de ton logo */
-            --texte: #4A4641;
+            --vert-olive: #3E4B31;
+            --vert-clair: #5a6b45;
+            --ocre: #B56A3A;
+            --ocre-clair: #c97d4e;
+            --fond-creme: #FDFBF8;
+            --fond-beige: #F5F0E8;
+            --texte: #2C1F0E;
+            --texte-doux: #5a4a38;
+            --blanc: #ffffff;
+            --ombre: rgba(62, 75, 49, 0.12);
         }
 
-        body { margin: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--texte); line-height: 1.6; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* NAVIGATION */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 15px rgba(0,0,0,0.03); }
-        .logo-area { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo-area img { height: 50px; }
-        .logo-text span { display: block; font-family: 'Playfair Display', serif; font-weight: bold; color: var(--vert-sombre); font-size: 1.2rem; }
-        
-        nav a { text-decoration: none; color: var(--texte); margin-left: 30px; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--fond-creme);
+            color: var(--texte);
+            line-height: 1.7;
+        }
+
+        /* ===================== HEADER ===================== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(253, 251, 248, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(181, 106, 58, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--ocre);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-tagline {
+            font-size: 0.65rem;
+            color: var(--vert-olive);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--texte);
+            padding: 8px 16px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+
         nav a:hover { color: var(--ocre); }
-        .btn-rdv { background: var(--ocre); color: white !important; padding: 12px 25px; border-radius: 50px; }
 
-        /* HERO SECTION */
-        .hero { position: relative; display: flex; align-items: center; min-height: 80vh; padding: 0 10%; overflow: hidden; }
-        .deco-lavande { position: absolute; top: 10%; right: -50px; width: 300px; opacity: 0.6; pointer-events: none; }
+        .btn-rdv {
+            background: var(--ocre) !important;
+            color: white !important;
+            padding: 10px 22px !important;
+            border-radius: 5px;
+            transition: background 0.2s !important;
+        }
 
-        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; width: 100%; z-index: 2; }
-        
-        .hero-image { position: relative; text-align: center; }
-        .hero-image img { width: 100%; max-width: 420px; border-radius: 200px 200px 30px 30px; border: 10px solid white; box-shadow: 0 20px 40px rgba(62, 75, 49, 0.1); }
+        .btn-rdv:hover { background: var(--ocre-clair) !important; }
 
-        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--vert-sombre); line-height: 1.2; margin-bottom: 20px; }
-        .rotating-box { display: block; height: 60px; overflow: hidden; color: var(--ocre); font-style: italic; font-weight: 400; }
-        .rotating-item { display: block; transition: 0.6s ease; }
+        /* ===================== HERO ===================== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            min-height: 88vh;
+            padding: 60px 10%;
+            background: var(--fond-creme);
+            position: relative;
+            overflow: hidden;
+        }
 
-        /* SECTION IDENTIFICATION (Vert Sombre) */
-        .recog { background-color: var(--vert-sombre); padding: 80px 10%; color: white; text-align: center; }
-        .recog h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px; }
-        .recog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: rgba(255,255,255,0.08); padding: 40px; border-radius: 15px; border-left: 5px solid var(--ocre); text-align: left; }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(181,106,58,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
 
-        @media (max-width: 900px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+        .hero-img {
+            display: flex;
+            justify-content: center;
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+
+        .hero-img img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 200px 200px 80px 80px;
+            border: 8px solid white;
+            box-shadow: 0 20px 50px var(--ombre), 0 0 0 1px rgba(181,106,58,0.1);
+            object-fit: cover;
+            aspect-ratio: 3/4;
+        }
+
+        .hero-text {
+            animation: fadeInRight 0.8s ease 0.2s both;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: rgba(62, 75, 49, 0.1);
+            color: var(--vert-olive);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--vert-olive);
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 em {
+            color: var(--ocre);
+            font-style: italic;
+        }
+
+        .rotate-wrap {
+            display: block;
+            height: 56px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .rotate-item {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.8rem;
+            color: var(--ocre);
+            transition: opacity 0.5s ease;
+            line-height: 56px;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--texte-doux);
+            margin-bottom: 35px;
+            max-width: 440px;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .cta-main {
+            background: var(--ocre);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .cta-main:hover {
+            background: var(--ocre-clair);
+            transform: translateY(-2px);
+        }
+
+        .cta-second {
+            color: var(--vert-olive);
+            padding: 16px 0;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-bottom: 2px solid var(--vert-olive);
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .cta-second:hover {
+            color: var(--ocre);
+            border-color: var(--ocre);
+        }
+
+        /* ===================== PILLIERS ===================== */
+        .pilliers {
+            background: var(--vert-olive);
+            padding: 50px 10%;
+        }
+
+        .pilliers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .pillier {
+            background: var(--vert-olive);
+            padding: 35px 30px;
+            text-align: center;
+        }
+
+        .pillier-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .pillier h3 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .pillier p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* ===================== IDENTIFICATION ===================== */
+        .recog {
+            background: var(--fond-beige);
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--ocre);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .recog h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--vert-olive);
+            margin-bottom: 12px;
+        }
+
+        .recog > p {
+            color: var(--texte-doux);
+            font-size: 1rem;
+            margin-bottom: 40px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .recog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .recog-card {
+            background: white;
+            padding: 28px 24px;
+            border-radius: 8px;
+            border-left: 4px solid var(--ocre);
+            text-align: left;
+            box-shadow: 0 4px 15px var(--ombre);
+            font-style: italic;
+            color: var(--texte-doux);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            transition: transform 0.2s;
+        }
+
+        .recog-card:hover { transform: translateY(-4px); }
+
+        .recog-card::before {
+            content: '"';
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--ocre);
+            opacity: 0.4;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .recog-cta {
+            display: inline-block;
+            background: var(--ocre);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .recog-cta:hover { background: var(--ocre-clair); }
+
+        /* ===================== MÉTHODE ===================== */
+        .methode {
+            padding: 90px 10%;
+            background: var(--fond-creme);
+        }
+
+        .methode-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .methode-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--vert-olive);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .methode-content p {
+            color: var(--texte-doux);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .methode-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            background: var(--ocre);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .step-content h4 {
+            font-weight: 700;
+            color: var(--vert-olive);
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
+            color: var(--texte-doux);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .methode-badge {
+            background: var(--fond-beige);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            border: 1px solid rgba(181,106,58,0.15);
+        }
+
+        .methode-badge img {
+            max-width: 160px;
+            margin-bottom: 20px;
+        }
+
+        .methode-badge p {
+            font-size: 0.9rem;
+            color: var(--texte-doux);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .methode-badge .badge-label {
+            display: inline-block;
+            background: var(--vert-olive);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 20px;
+        }
+
+        /* ===================== OFFRES ===================== */
+        .offres {
+            background: var(--fond-beige);
+            padding: 90px 10%;
+            text-align: center;
+        }
+
+        .offres-header {
+            margin-bottom: 50px;
+        }
+
+        .offres-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--vert-olive);
+            margin-bottom: 12px;
+        }
+
+        .offres-header p {
+            color: var(--texte-doux);
+            font-size: 1rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .offres-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .offre-card {
+            background: white;
+            border-radius: 10px;
+            padding: 35px 28px;
+            text-align: left;
+            box-shadow: 0 4px 20px var(--ombre);
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .offre-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(62,75,49,0.15);
+        }
+
+        .offre-card.featured {
+            border: 2px solid var(--ocre);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--ocre);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .offre-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .offre-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--vert-olive);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .offre-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--ocre);
+            margin-bottom: 5px;
+        }
+
+        .offre-price span {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--texte-doux);
+        }
+
+        .offre-desc {
+            font-size: 0.9rem;
+            color: var(--texte-doux);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .offre-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .offre-features li {
+            font-size: 0.85rem;
+            color: var(--texte-doux);
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .offre-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--vert-olive);
+            font-weight: 700;
+        }
+
+        .offre-cta {
+            display: block;
+            text-align: center;
+            background: var(--vert-olive);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+            margin-top: auto;
+        }
+
+        .offre-cta:hover { background: var(--vert-clair); }
+
+        .offre-card.featured .offre-cta {
+            background: var(--ocre);
+        }
+
+        .offre-card.featured .offre-cta:hover {
+            background: var(--ocre-clair);
+        }
+
+        .offres-note {
+            font-size: 0.85rem;
+            color: var(--texte-doux);
+            font-style: italic;
+        }
+
+        /* ===================== À PROPOS ===================== */
+        .apropos {
+            padding: 90px 10%;
+            background: var(--fond-creme);
+        }
+
+        .apropos-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .apropos-img img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px var(--ombre);
+            object-fit: cover;
+            aspect-ratio: 4/5;
+        }
+
+        .apropos-content .section-label { display: block; }
+
+        .apropos-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--vert-olive);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .apropos-content p {
+            color: var(--texte-doux);
+            font-size: 1rem;
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .apropos-valeurs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .valeur {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--vert-olive);
+        }
+
+        .valeur-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--ocre);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .apropos-cta {
+            display: inline-block;
+            background: var(--ocre);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        .apropos-cta:hover { background: var(--ocre-clair); }
+
+        /* ===================== TEMOIGNAGES ===================== */
+        .temoignages {
+            background: var(--vert-olive);
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .temoignages .section-label { color: rgba(255,255,255,0.6); }
+
+        .temoignages h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .temoignages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .temoignage {
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: left;
+            border-top: 3px solid var(--ocre);
+        }
+
+        .temoignage-text {
+            font-style: italic;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .temoignage-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--ocre);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .author-info strong {
+            display: block;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .author-info span {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+        }
+
+        .stars {
+            color: var(--ocre);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        /* ===================== CONTACT ===================== */
+        .contact {
+            padding: 90px 10%;
+            background: var(--fond-beige);
+        }
+
+        .contact-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--vert-olive);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .contact-info p {
+            color: var(--texte-doux);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .contact-item-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--vert-olive);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--vert-olive);
+            margin-bottom: 2px;
+        }
+
+        .contact-item-text span {
+            color: var(--texte-doux);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px var(--ombre);
+        }
+
+        .contact-form h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--vert-olive);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--vert-olive);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1.5px solid rgba(62,75,49,0.2);
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--texte);
+            background: var(--fond-creme);
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--ocre);
+        }
+
+        .form-group textarea { resize: vertical; min-height: 100px; }
+
+        .form-submit {
+            width: 100%;
+            background: var(--ocre);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .form-submit:hover { background: var(--ocre-clair); }
+
+        .form-disclaimer {
+            font-size: 0.75rem;
+            color: var(--texte-doux);
+            margin-top: 12px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            background: var(--texte);
+            color: rgba(255,255,255,0.7);
+            padding: 50px 10% 30px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+
+        .footer-brand .logo-name { color: var(--ocre); }
+        .footer-brand .logo-tagline { color: rgba(255,255,255,0.4); }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-top: 15px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            background: var(--ocre);
+            border-color: var(--ocre);
+            color: white;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover { color: var(--ocre); }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-disclaimer {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            font-style: italic;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===================== ANIMATIONS ===================== */
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 1024px) {
+            .offres-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto 40px; }
+            .temoignages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 850px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding: 50px 5%; min-height: auto; }
+            .hero-img { order: -1; }
+            .hero-img img { max-width: 280px; }
             .hero-text h1 { font-size: 2.2rem; }
+            .hero-actions { justify-content: center; }
+            .hero-desc { margin: 0 auto 30px; }
+            .methode-inner { grid-template-columns: 1fr; }
+            .apropos-inner { grid-template-columns: 1fr; }
+            .contact-inner { grid-template-columns: 1fr; }
+            .pilliers-grid { grid-template-columns: 1fr; }
+            .apropos-valeurs { grid-template-columns: 1fr; }
+            nav a:not(.btn-rdv) { display: none; }
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 550px) {
+            .hero-text h1 { font-size: 1.9rem; }
+            .rotate-item { font-size: 2rem; }
+            .recog h2, .methode-content h2, .offres-header h2,
+            .apropos-content h2, .temoignages h2, .contact-info h2 {
+                font-size: 1.8rem;
+            }
+            .contact-form { padding: 25px; }
+            .offres-grid { max-width: 100%; }
+            .temoignages-grid { max-width: 100%; }
         }
     </style>
 </head>
 <body>
 
+<!-- ===================== HEADER ===================== -->
 <header>
-    <a href="#" class="logo-area">
-        <div class="logo-text"><span>NUTRISOINS</span></div>
+    <a href="#" class="logo-wrap">
+        <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="16" r="6" stroke="#3E4B31" stroke-width="1.5" fill="none"/>
+            <path d="M24 22 L24 36" stroke="#3E4B31" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M24 30 L16 25" stroke="#3E4B31" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M24 30 L32 25" stroke="#3E4B31" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="24" cy="20" r="2" fill="#B56A3A"/>
+            <path d="M10 38 Q17 30 24 36 Q31 30 38 38" stroke="#3E4B31" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M8 14 Q12 8 16 14" stroke="#3E4B31" stroke-width="1" fill="none" opacity="0.5"/>
+            <path d="M36 10 Q40 4 44 10" stroke="#3E4B31" stroke-width="1" fill="none" opacity="0.5"/>
+        </svg>
+        <div class="logo-text">
+            <span class="logo-name">NUTRISOINS</span>
+            <span class="logo-tagline">Nutrition et bien-être</span>
+        </div>
     </a>
     <nav>
-        <a href="#">Ma Méthode</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
-        <a href="#" class="btn-rdv">PRENDRE RDV</a>
+        <a href="#methode">Ma Méthode</a>
+        <a href="#offres">Mes Offres</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact" class="btn-rdv">PRENDRE RDV</a>
     </nav>
 </header>
 
+<!-- ===================== HERO ===================== -->
 <section class="hero">
-    <img src="lavande.png" class="deco-lavande" alt="Déco">
-    <div class="hero-grid">
-        <div class="hero-image">
-            <img src="Michele_Renault.jpg" alt="Michèle Renault">
+    <div class="hero-img">
+        <img src="Michele_Renault.JPG" alt="Michèle Renault, coach en nutrition à Namur">
+    </div>
+    <div class="hero-text">
+        <span class="hero-label">Coach en nutrition certifiée · Namur</span>
+        <h1>Retrouvez votre équilibre</h1>
+        <div class="rotate-wrap">
+            <span id="rotate" class="rotate-item">Naturellement.</span>
         </div>
-        <div class="hero-text">
-            <h1>Retrouvez votre équilibre <br> 
-                <span class="rotating-box">
-                    <span class="rotating-item" id="rotate">Naturellement.</span>
-                </span>
-            </h1>
-            <p style="font-size: 1.2rem; max-width: 500px;">Michèle Renault, votre guide vers une nutrition bienveillante et durable à Namur.</p>
-            <br>
-            <a href="#" class="btn-rdv" style="padding: 18px 40px; font-size: 1.1rem;">Découvrir mon approche</a>
+        <p class="hero-desc">Michèle Renault vous accompagne vers une alimentation bienveillante, durable et sans culpabilité — à Namur et en ligne.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="cta-main">Prendre rendez-vous</a>
+            <a href="#methode" class="cta-second">Découvrir ma méthode</a>
         </div>
     </div>
 </section>
 
+<!-- ===================== PILLIERS ===================== -->
+<div class="pilliers">
+    <div class="pilliers-grid">
+        <div class="pillier">
+            <span class="pillier-icon">🌿</span>
+            <h3>Écoute individualisée</h3>
+            <p>Chaque parcours est unique. Je prends le temps de comprendre votre histoire, vos habitudes et vos objectifs.</p>
+        </div>
+        <div class="pillier">
+            <span class="pillier-icon">🎓</span>
+            <h3>Expertise certifiée</h3>
+            <p>Formée par le réseau Newtrition Coach, ma pratique repose sur des protocoles validés et une formation continue.</p>
+        </div>
+        <div class="pillier">
+            <span class="pillier-icon">🤝</span>
+            <h3>Accompagnement durable</h3>
+            <p>Pas de régime express. Un changement en douceur qui s'intègre à votre vie pour durer dans le temps.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IDENTIFICATION ===================== -->
 <section class="recog">
-    <h2>Vous vous reconnaissez ?</h2>
+    <span class="section-label">Vous vous reconnaissez ?</span>
+    <h2>Ces pensées vous parlent-elles ?</h2>
+    <p>Si vous vous êtes retrouvé·e dans l'une de ces situations, vous êtes au bon endroit.</p>
     <div class="recog-grid">
-        <div class="card">Vous prenez du poids sans comprendre pourquoi, malgré vos efforts...</div>
-        <div class="card">Vous êtes fatigué(e) des régimes qui fonctionnent… puis échouent.</div>
-        <div class="card">Votre corps change et vous ne savez plus quoi manger pour vous sentir bien.</div>
+        <div class="recog-card">Je prends du poids sans comprendre pourquoi, malgré mes efforts.</div>
+        <div class="recog-card">Je suis épuisée des régimes qui ne durent pas. Le yo-yo recommence toujours.</div>
+        <div class="recog-card">Mon corps change et je ne sais plus quoi manger pour me sentir bien.</div>
+        <div class="recog-card">Je veux manger sainement, mais sans me priver de ce que j'aime.</div>
+        <div class="recog-card">Je manque d'énergie au quotidien et je sens que l'alimentation y est pour quelque chose.</div>
+        <div class="recog-card">J'ai besoin d'un vrai suivi, pas de conseils génériques trouvés sur internet.</div>
+    </div>
+    <a href="#contact" class="recog-cta">Je veux en parler avec Michèle →</a>
+</section>
+
+<!-- ===================== MÉTHODE ===================== -->
+<section class="methode" id="methode">
+    <div class="methode-inner">
+        <div class="methode-content">
+            <span class="section-label">Ma Méthode</span>
+            <h2>Une approche holistique et bienveillante</h2>
+            <p>Mon accompagnement ne se limite pas à ce que vous mettez dans votre assiette. Je prends en compte votre mode de vie, votre relation à la nourriture, vos émotions et vos objectifs de santé à long terme.</p>
+            <p>Ensemble, nous construisons un programme sur mesure, progressif et réaliste — parce que les meilleurs résultats sont ceux qui durent.</p>
+            <div class="methode-steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>Bilan initial complet</h4>
+                        <p>Analyse de vos habitudes alimentaires, de votre mode de vie, de vos antécédents et de vos objectifs.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>Plan personnalisé</h4>
+                        <p>Construction d'un programme nutritionnel adapté à vous, pas à un archétype théorique.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>Suivi régulier</h4>
+                        <p>Ajustements au fil du temps, soutien en cas de difficulté, célébration des progrès.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h4>Autonomie retrouvée</h4>
+                        <p>L'objectif final : que vous n'ayez plus besoin de moi pour faire les bons choix naturellement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="methode-badge">
+            <img src="Image_newtricoach.jpeg" alt="Newtrition Coach - réseau certifié">
+            <p>Mon coaching s'inscrit dans le cadre du réseau <strong>Newtrition Coach</strong>, qui garantit une formation certifiante, un protocole validé et un cadre déontologique rigoureux.</p>
+            <span class="badge-label">✓ Approche certifiée</span>
+        </div>
     </div>
 </section>
+
+<!-- ===================== OFFRES ===================== -->
+<section class="offres" id="offres">
+    <div class="offres-header">
+        <span class="section-label">Mes Offres</span>
+        <h2>Un accompagnement adapté à votre situation</h2>
+        <p>Choisissez la formule qui correspond à vos besoins et à votre rythme.</p>
+    </div>
+    <div class="offres-grid">
+        <div class="offre-card">
+            <div class="offre-icon">🌱</div>
+            <h3>Séance Découverte</h3>
+            <div class="offre-price">Sur demande <span>/ 1h</span></div>
+            <p class="offre-desc">Un premier échange pour faire connaissance, comprendre votre situation et voir si mon accompagnement est fait pour vous. Sans engagement.</p>
+            <ul class="offre-features">
+                <li>Bilan de votre situation actuelle</li>
+                <li>Questions & réponses</li>
+                <li>Présentation de la méthode</li>
+                <li>En présentiel ou en ligne</li>
+            </ul>
+            <a href="#contact" class="offre-cta">Prendre contact</a>
+        </div>
+        <div class="offre-card featured">
+            <span class="featured-badge">⭐ Le plus choisi</span>
+            <div class="offre-icon">🌿</div>
+            <h3>Programme Suivi</h3>
+            <div class="offre-price">Sur demande <span>/ 3 mois</span></div>
+            <p class="offre-desc">Un accompagnement complet sur 3 mois pour ancrer de nouvelles habitudes durablement. Idéal pour un changement en profondeur.</p>
+            <ul class="offre-features">
+                <li>Bilan initial approfondi</li>
+                <li>Plan nutritionnel personnalisé</li>
+                <li>Séances de suivi mensuelles</li>
+                <li>Accès messagerie entre séances</li>
+                <li>En présentiel ou en ligne</li>
+            </ul>
+            <a href="#contact" class="offre-cta">Je suis intéressé·e</a>
+        </div>
+        <div class="offre-card">
+            <div class="offre-icon">🌾</div>
+            <h3>Séance Ponctuelle</h3>
+            <div class="offre-price">Sur demande <span>/ séance</span></div>
+            <p class="offre-desc">Pour un conseil ciblé, une mise au point ou un coup de pouce à un moment précis de votre parcours.</p>
+            <ul class="offre-features">
+                <li>Thème défini à l'avance</li>
+                <li>Conseils concrets et actionnables</li>
+                <li>Bilan partiel</li>
+                <li>En présentiel ou en ligne</li>
+            </ul>
+            <a href="#contact" class="offre-cta">En savoir plus</a>
+        </div>
+    </div>
+    <p class="offres-note">💬 Les tarifs sont communiqués sur demande. Contactez-moi pour un devis adapté à votre situation.</p>
+</section>
+
+<!-- ===================== À PROPOS ===================== -->
+<section class="apropos" id="apropos">
+    <div class="apropos-inner">
+        <div class="apropos-img">
+            <img src="Michele_Renault.JPG" alt="Michèle Renault - Coach en nutrition à Namur">
+        </div>
+        <div class="apropos-content">
+            <span class="section-label">À propos</span>
+            <h2>Bonjour, je suis Michèle 👋</h2>
+            <p>Coach en nutrition certifiée basée à Waret-la-Chaussée, près de Namur, j'accompagne les adultes qui souhaitent retrouver un équilibre alimentaire durable — sans régimes punitifs ni culpabilité.</p>
+            <p>Mon engagement dans ce domaine est né d'une conviction profonde : bien manger ne devrait pas être une source de stress. Formée par le réseau Newtrition Coach, j'ai acquis les outils pour vous aider à construire une relation sereine et durable avec la nourriture.</p>
+            <p>Mon approche est bienveillante, progressive et toujours adaptée à votre réalité du quotidien. Parce que le meilleur programme nutritionnel, c'est celui que vous pouvez tenir sur le long terme.</p>
+            <div class="apropos-valeurs">
+                <div class="valeur"><div class="valeur-dot"></div> Bienveillance</div>
+                <div class="valeur"><div class="valeur-dot"></div> Écoute active</div>
+                <div class="valeur"><div class="valeur-dot"></div> Approche naturelle</div>
+                <div class="valeur"><div class="valeur-dot"></div> Sans jugement</div>
+                <div class="valeur"><div class="valeur-dot"></div> Résultats durables</div>
+                <div class="valeur"><div class="valeur-dot"></div> Expertise certifiée</div>
+            </div>
+            <a href="#contact" class="apropos-cta">Me contacter</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== TÉMOIGNAGES ===================== -->
+<section class="temoignages">
+    <span class="section-label">Témoignages</span>
+    <h2>Ce qu'ils disent de leur expérience</h2>
+    <div class="temoignages-grid">
+        <div class="temoignage">
+            <div class="stars">★★★★★</div>
+            <p class="temoignage-text">Michèle m'a aidée à comprendre pourquoi je prenais du poids malgré mes efforts. Son approche est douce et sans jugement. Pour la première fois, je me sens écoutée.</p>
+            <div class="temoignage-author">
+                <div class="author-avatar">S.M</div>
+                <div class="author-info">
+                    <strong>Sophie M.</strong>
+                    <span>Namur · Programme 3 mois</span>
+                </div>
+            </div>
+        </div>
+        <div class="temoignage">
+            <div class="stars">★★★★★</div>
+            <p class="temoignage-text">J'avais essayé des dizaines de régimes. Avec Michèle, ce n'est pas un régime — c'est un changement de regard sur l'alimentation. Je mange mieux et je me sens mieux.</p>
+            <div class="temoignage-author">
+                <div class="author-avatar">C.D</div>
+                <div class="author-info">
+                    <strong>Catherine D.</strong>
+                    <span>Gembloux · Suivi personnalisé</span>
+                </div>
+            </div>
+        </div>
+        <div class="temoignage">
+            <div class="stars">★★★★★</div>
+            <p class="temoignage-text">Un accompagnement sérieux, humain et vraiment adapté à ma situation. Les conseils sont concrets et réalistes. Je recommande sans hésiter.</p>
+            <div class="temoignage-author">
+                <div class="author-avatar">P.L</div>
+                <div class="author-info">
+                    <strong>Pierre L.</strong>
+                    <span>Suivi en ligne</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="contact" id="contact">
+    <div class="contact-inner">
+        <div class="contact-info">
+            <span class="section-label">Contact</span>
+            <h2>Commençons votre parcours ensemble</h2>
+            <p>Vous avez des questions ou souhaitez prendre rendez-vous ? Remplissez le formulaire ou contactez-moi directement. Je vous réponds dans les 48h.</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div class="contact-item-text">
+                        <strong>Adresse</strong>
+                        <span>Rue des Bruyères 256<br>5310 Waret-la-Chaussée (Belgique)</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <div class="contact-item-text">
+                        <strong>Téléphone</strong>
+                        <span>+32 (0) 475/82.60.35</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">💻</div>
+                    <div class="contact-item-text">
+                        <strong>Consultations</strong>
+                        <span>En présentiel à Namur<br>ou en ligne (Belgique et France)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <h3>Envoyez-moi un message</h3>
+            <div class="form-group">
+                <label>Votre prénom et nom</label>
+                <input type="text" placeholder="Marie Dupont">
+            </div>
+            <div class="form-group">
+                <label>Votre email</label>
+                <input type="email" placeholder="marie@email.com">
+            </div>
+            <div class="form-group">
+                <label>Téléphone (optionnel)</label>
+                <input type="tel" placeholder="+32 4xx xx xx xx">
+            </div>
+            <div class="form-group">
+                <label>Votre demande</label>
+                <select>
+                    <option value="">Je souhaite...</option>
+                    <option>Prendre un premier rendez-vous</option>
+                    <option>En savoir plus sur les offres</option>
+                    <option>Poser une question</option>
+                    <option>Autre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Votre message</label>
+                <textarea placeholder="Décrivez brièvement votre situation ou votre question..."></textarea>
+            </div>
+            <button class="form-submit">Envoyer mon message →</button>
+            <p class="form-disclaimer">Vos données sont confidentielles et ne seront jamais partagées avec des tiers.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="logo-text">
+                <span class="logo-name">NUTRISOINS</span>
+                <span class="logo-tagline">Nutrition et bien-être</span>
+            </div>
+            <p>Coach en nutrition certifiée à Namur. Un accompagnement bienveillant pour retrouver votre équilibre alimentaire durablement.</p>
+            <div class="footer-social">
+                <a href="#" class="social-link" title="Instagram">📷</a>
+                <a href="#" class="social-link" title="Facebook">📘</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#methode">Ma Méthode</a></li>
+                <li><a href="#offres">Mes Offres</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Informations</h4>
+            <ul>
+                <li><a href="#">Mentions légales</a></li>
+                <li><a href="#">Politique de confidentialité</a></li>
+                <li><a href="#">Newtrition Coach</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 NUTRISOINS · Michèle Renault · BCE N° 0812.541.218</p>
+        <p class="footer-disclaimer">Le coaching nutritionnel ne remplace pas une consultation médicale. En cas de problème de santé, consultez votre médecin.</p>
+    </div>
+</footer>
 
 <script>
-    const words = ["Naturellement.", "Durablement.", "À votre rythme.", "Sans privation."];
+    // Rotation des mots dans le hero
+    const words = ["Naturellement.", "Durablement.", "À votre rythme.", "Sans privation.", "Avec bienveillance."];
     let i = 0;
+    const el = document.getElementById('rotate');
     setInterval(() => {
-        const el = document.getElementById('rotate');
         el.style.opacity = 0;
-        el.style.transform = 'translateY(20px)';
         setTimeout(() => {
             i = (i + 1) % words.length;
             el.innerText = words[i];
             el.style.opacity = 1;
-            el.style.transform = 'translateY(0)';
         }, 500);
-    }, 4000);
+    }, 3500);
+
+    // Smooth appear on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.recog-card, .offre-card, .temoignage, .step, .pillier').forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(el);
+    });
+
+    // Formulaire (placeholder - à connecter à un backend)
+    document.querySelector('.form-submit').addEventListener('click', () => {
+        alert('Merci pour votre message ! Michèle vous répondra dans les 48h.');
+    });
 </script>
 
 </body>
