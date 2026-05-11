@@ -350,3 +350,137 @@ e:/nutrisoins/
 ---
 
 *Fin de session 3 — Bonne continuation ! 🌿*
+
+---
+
+# 📓 Journal de bord — Session 4
+
+**Date de la session :** 11 mai 2026  
+**Durée :** ~1 session de travail  
+**Participants :** Vince (porteur du projet) + Claude (consultant stratégique)
+
+---
+
+## 🎯 Objectif de la session
+
+Mise en place d'un système de prise de rendez-vous en ligne via **Cal.com** et intégration dans le site.
+
+---
+
+## ✅ Réalisations
+
+### 1. Choix et création du compte Cal.com
+- ✅ Outil retenu : **Cal.com** (gratuit, RGPD-friendly, hébergement EU possible)
+- ✅ Compte créé avec l'identifiant : `vincent-qxx86o` (compte test de Vince — à remplacer par le compte de Michèle avant le lancement)
+- ✅ URL de base : `cal.com/vincent-qxx86o`
+
+### 2. Création des 4 types de rendez-vous
+
+| Event type | URL slug | Durée | Mode |
+|-----------|----------|-------|------|
+| Séance Découverte — Coaching Nutrition | `decouverte` | 45 min | Présentiel ou en ligne |
+| Bilan Initial — Programme Suivi 12 semaines | `bilan-initial` | 75 min | Présentiel uniquement |
+| Séance Ponctuelle — Conseil Nutritionnel | `seance-ponctuelle` | 60 min | Présentiel ou en ligne |
+| Séance de Suivi — Programme 12 semaines | `suivi-programme` | 60 min | En ligne uniquement |
+
+### 3. Questions de réservation configurées
+
+**Séance Découverte & Séance Ponctuelle :**
+1. Quel est votre objectif principal ? *(obligatoire)*
+2. Avez-vous déjà suivi un coaching ou un régime ? *(Oui/Non, obligatoire)*
+3. Préférence : présentiel ou en ligne ? *(obligatoire)*
+4. Y a-t-il quelque chose d'important que Michèle devrait savoir ? *(optionnel)*
+
+**Bilan Initial — Programme 12 semaines :**
+1. Quels sont vos objectifs pour ce programme ? *(obligatoire)*
+2. Avez-vous déjà suivi un coaching ou un régime ? *(Oui/Non, obligatoire)*
+3. Y a-t-il quelque chose d'important que Michèle devrait savoir ? *(optionnel)*
+*(pas de question présentiel/ligne — d'office en présentiel)*
+
+**Séance de Suivi :**
+1. Depuis notre dernière séance, qu'est-ce qui a bien fonctionné ? *(obligatoire)*
+2. Quelles difficultés avez-vous rencontrées ? *(obligatoire)*
+3. Y a-t-il quelque chose de particulier à aborder ? *(optionnel)*
+
+### 4. Disponibilités configurées
+
+| Jour | Plage(s) |
+|------|----------|
+| Lundi | 17h00 → 20h00 |
+| Mardi | 17h00 → 20h00 |
+| Mercredi | 16h00 → 20h00 |
+| Jeudi | 17h00 → 20h00 |
+| Vendredi | 16h00 → 19h00 |
+| Samedi | 10h00 → 12h00 et 14h00 → 18h00 |
+| Dimanche | Fermé |
+
+- ✅ Timezone réglée sur **Europe/Brussels**
+- ✅ **Slot interval** réglé à **60 min** sur tous les event types (créneaux proposés toutes les heures, indépendamment de la durée de la séance)
+
+### 5. Personnalisation du profil Cal.com
+- ✅ Nom affiché : `Michèle — NUTRISOINS`
+- ✅ Logo yogi/lotus NUTRISOINS uploadé
+- ✅ Bio courte ajoutée
+
+### 6. Intégration dans `index.html`
+- ✅ Bouton **"PRENDRE RDV"** du header → `cal.com/vincent-qxx86o`
+- ✅ CTA Séance Découverte → `cal.com/vincent-qxx86o/decouverte`
+- ✅ CTA Programme Suivi → `cal.com/vincent-qxx86o/bilan-initial`
+- ✅ CTA Séance Ponctuelle → `cal.com/vincent-qxx86o/seance-ponctuelle`
+- ✅ Tous les liens s'ouvrent en `target="_blank"`
+- ✅ `git push` effectué — modifications en ligne
+
+---
+
+## ⚠️ Points de vigilance soulevés
+
+- 📌 **Compte de test** : l'identifiant `vincent-qxx86o` est provisoire. Avant le lancement officiel, créer le compte Cal.com définitif avec l'email de Michèle (idéalement `michele@nutrisoins.be`) et remplacer toutes les occurrences dans `index.html` (simple chercher/remplacer).
+- 📌 **Adresse présentiel** : configurer l'adresse dans Cal.com une fois décidée (domicile ou local dédié).
+- 📌 **Connexion agenda Google** : connecter le Google Agenda de Michèle pour synchronisation automatique des disponibilités.
+
+---
+
+## 🐛 Problèmes techniques rencontrés et résolus
+
+| Problème | Solution appliquée |
+|----------|-------------------|
+| Connecteur Filesystem refusait l'accès à `E:\nutrisoins` | Répertoire ajouté dans les allowed directories — accès opérationnel en fin de session |
+| Cal.com propose des créneaux par blocs égaux à la durée (ex. 16h/17h30 pour 90 min) | Réglage du **Slot interval** à 60 min dans chaque event type |
+| "Attendee's choice" non disponible en version gratuite | Remplacé par une question de réservation "Présentiel ou en ligne ?" |
+
+---
+
+## 📋 État actuel du projet (fin session 4)
+
+### Fichiers dans le repo
+```
+e:/nutrisoins/
+├── index.html                  ← Liens Cal.com intégrés sur tous les CTA
+├── coach-nutrition-namur.jpg   ← Photo profil
+├── logo_nutrisoins.svg         ← Logo
+├── Image_newtricoach.jpeg      ← Logo réseau
+├── journal_de_bord.md          ← Ce fichier (mis à jour)
+└── README.md
+```
+
+### État des sections du site
+- 🟢 Hero : mot rotatif + sous-titre synchronisé
+- 🟢 Offres : 3 CTA connectés à Cal.com
+- 🟢 Header : bouton "PRENDRE RDV" connecté à Cal.com
+- 🔴 Témoignages : supprimée (vrais retours clients à venir)
+- 🟡 Contact : formulaire non connecté (Formspree/EmailJS à faire)
+- 🟡 Cal.com : compte test — à basculer sur le compte définitif de Michèle
+
+---
+
+## 🚀 Prochaines étapes (session 5)
+
+1. **Formulaire de contact** — connecter à Formspree ou EmailJS
+2. **Mentions légales + politique de confidentialité RGPD**
+3. **Google Business Profile** en mode zone de service
+4. **Domaine nutrisoins.be** — vérifier disponibilité et configurer DNS
+5. **Basculer Cal.com** sur le compte définitif de Michèle
+
+---
+
+*Fin de session 4 — Bonne continuation ! 🌿*
