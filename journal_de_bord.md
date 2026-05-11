@@ -249,3 +249,104 @@ e:/nutrisoins/
 ---
 
 *Fin de session 2 — Bonne continuation ! 🌿*
+
+---
+
+# 📓 Journal de bord — Session 3
+
+**Date de la session :** 11 mai 2026  
+**Durée :** ~1 session de travail  
+**Participants :** Vince (porteur du projet) + Claude (consultant stratégique)
+
+---
+
+## 🎯 Objectif de la session
+
+Amélioration de l'expérience utilisateur du hero et nettoyage éditorial du site.
+
+---
+
+## ✅ Réalisations
+
+### 1. Hero — sous-titres rotatifs synchronisés
+- ✅ Ajout d'un bloc `.hero-sub-wrap` avec 5 sous-titres (`.hero-sub-slot`) animés
+- ✅ Synchronisation avec le mot rotatif existant : chaque mot correspond à un sous-titre distinct
+- ✅ Animation CSS : entrée par glissement + fondu (`translateY` + `opacity`), délai `0.1s` pour décalage naturel
+- ✅ Intervalle de rotation : 4 secondes (ajustable via `setInterval`)
+- ✅ Les 5 combinaisons mot / sous-titre :
+  | Mot | Sous-titre |
+  |-----|-----------|
+  | Naturellement. | Alimentation juste, durable et sans culpabilité |
+  | Durablement. | Approche bienveillante et personnalisée |
+  | À votre rythme. | Adaptation à votre corps, votre vie |
+  | Sans privation. | Relation apaisée et durable avec la nourriture |
+  | Avec bienveillance. | Manger bien sans frustration ni comptage |
+
+### 2. Section Offres — corrections éditoriales
+- ✅ Badge carte "Programme Suivi" : `⭐ Le plus choisi` → `⭐ Conseillé`
+- ✅ Durée programme : `/ 3 mois` → `/ 12 semaines` (badge + description)
+
+### 3. Section Témoignages — suppression
+- ✅ Section `<section class="temoignages">` entièrement retirée (HTML + styles CSS associés)
+- ✅ Justification : témoignages fictifs, section à recréer uniquement avec de vrais retours clients
+
+### 4. Section À propos — logo dans le titre
+- ✅ Emoji 👋 remplacé par le logo SVG `logo_nutrisoins.svg` inline dans le `<h2>`
+- ✅ Dimensions : `width: 48px; height: 48px; vertical-align: middle; margin-left: 8px`
+
+---
+
+## 💡 Notes techniques (session 3)
+
+- **Réglage des transitions CSS** : `opacity Xs ease Ys` = propriété / durée / courbe / délai. Le délai `0.1s` sur le sous-titre crée un léger décalage visuel par rapport au mot rotatif — effet naturel.
+- **Courbes disponibles** : `ease` (défaut, asymétrique), `ease-out` (recommandé contenu éditorial), `linear`, `ease-in`, `ease-in-out`.
+- **Tip fondu long** : pour un fondu perceptible signalant le prochain changement, monter la transition à `1.2s` et l'intervalle à `5000ms` — temps de lecture nette ≈ 3.8s, fondu visible ≈ 1.2s.
+- **PowerShell** : `&&` non supporté — utiliser les commandes Git séparées ligne par ligne.
+
+---
+
+## 🐛 Problèmes techniques rencontrés et résolus
+
+| Problème | Solution appliquée |
+|----------|-------------------|
+| `&&` non valide en PowerShell pour chaîner les commandes Git | Commandes `git add`, `git commit`, `git push` lancées séparément |
+| Connecteur `filesystem:edit_file` refusé sur `E:\nutrisoins` | Fichier reconstruit dans l'env. Claude puis téléchargé et remplacé manuellement |
+
+---
+
+## 📋 État actuel du projet (fin session 3)
+
+### Fichiers dans le repo
+```
+e:/nutrisoins/
+├── index.html                  ← Site mis à jour (hero rotatif complet, témoignages supprimés)
+├── coach-nutrition-namur.jpg   ← Photo profil
+├── logo_nutrisoins.svg         ← Logo (utilisé dans header + section À propos)
+├── Image_newtricoach.jpeg      ← Logo réseau Newtrition Coach
+├── journal_de_bord.md          ← Ce fichier
+└── README.md
+```
+
+### État des sections du site
+- 🟢 Hero : mot rotatif + sous-titre synchronisé (5 combinaisons)
+- 🟢 Pilliers : OK
+- 🟢 Identification : OK
+- 🟢 Ma Méthode : OK
+- 🟢 Mes Offres : badge et durée corrigés
+- 🟢 À propos : logo SVG dans le titre
+- 🔴 Témoignages : supprimée (à recréer avec vrais retours clients)
+- 🟡 Contact : formulaire non connecté (Formspree/EmailJS à faire)
+- 🟢 Footer : OK
+
+---
+
+## 🚀 Prochaines étapes (session 4)
+
+1. **Formulaire de contact fonctionnel** — connecter à Formspree ou EmailJS
+2. **Mentions légales + politique de confidentialité RGPD**
+3. **Google Business Profile** en mode zone de service
+4. **Domaine nutrisoins.be** — vérifier disponibilité et configurer DNS
+
+---
+
+*Fin de session 3 — Bonne continuation ! 🌿*
