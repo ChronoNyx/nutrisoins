@@ -484,3 +484,91 @@ e:/nutrisoins/
 ---
 
 *Fin de session 4 — Bonne continuation ! 🌿*
+
+---
+
+# 📓 Journal de bord — Session 5
+
+**Date de la session :** 12 mai 2026  
+**Durée :** ~1 session de travail  
+**Participants :** Vince (porteur du projet) + Claude (consultant stratégique)
+
+---
+
+## 🎯 Objectif de la session
+
+Migration de l'hébergement de GitHub Pages vers **Vercel** et configuration du domaine personnalisé `nutrisoins.be`.
+
+---
+
+## ✅ Réalisations
+
+### 1. Décision d'hébergement — GitHub Pages → Vercel
+- ✅ Comparatif GitHub Pages vs Vercel réalisé
+- ✅ Vercel retenu pour ses avantages : CDN edge performant, analytics intégrés, fonctions serverless (formulaire de contact futur), previews de déploiement
+- ✅ Stratégie retenue : configurer le domaine maintenant, brancher le repo quand Michèle donne le feu vert
+
+### 2. Configuration du domaine `nutrisoins.be` dans Vercel
+- ✅ Domaine ajouté au projet placeholder `project-coach` dans Vercel
+- ✅ Records DNS configurés dans la zone OVH :
+  - `@` / A / `216.198.79.1` (nouveau record Vercel — IP range expansion)
+  - `www` / CNAME / `cname.vercel-dns.com.` (après suppression des anciens records OVH)
+- ✅ Propagation DNS immédiate (< 30 min)
+- ✅ Statut Vercel : **Valid Configuration** ✅
+
+### 3. Clarification — mention du webmaster
+- ✅ Décision : le webmaster (Vince) **ne figure pas** sur le site public
+- ✅ Seul le responsable de publication (Michèle) apparaîtra dans les mentions légales
+- ✅ La paternité technique reste dans l'historique Git (README)
+
+---
+
+## ⚠️ Points de vigilance soulevés
+
+- ⚠️ **Action Required Vercel** : adresse de facturation manquante sur le compte — à compléter (même en Hobby/gratuit)
+- 📌 **Records email OVH préservés** : MX, SPF, DKIM (`ovhmo-selector`) non touchés — nécessaires pour la future adresse `@nutrisoins.be`
+
+---
+
+## 🐛 Problèmes techniques rencontrés et résolus
+
+| Problème | Solution appliquée |
+|----------|-------------------|
+| Vercel n'affichait pas les records DNS dans la vue domaines du projet | Navigation via Settings → Domains du projet → "Learn more" pour afficher les records |
+| Record `www` OVH existant (A `213.186.33.5` + TXT `"3|welcome"`) bloquait l'ajout du CNAME | Suppression des deux records OVH avant ajout du CNAME Vercel |
+| Interface Vercel confuse entre gestion globale et gestion par projet | Records DNS trouvés dans Settings → Domains du projet `project-coach` |
+
+---
+
+## 📋 État actuel du projet (fin session 5)
+
+### Infrastructure
+- 🟢 `nutrisoins.be` → pointé vers Vercel (Valid Configuration)
+- 🟡 Repo `ChronoNyx/nutrisoins` → encore sur GitHub Pages (à basculer sur Vercel au feu vert de Michèle)
+- 🟡 GitHub Pages → encore actif (à désactiver lors du branchement)
+
+### Fichiers dans le repo
+
+e:/nutrisoins/
+├── index.html                  ← Inchangé cette session
+├── coach-nutrition-namur.jpg   ← Photo profil
+├── logo_nutrisoins.svg         ← Logo
+├── Image_newtricoach.jpeg      ← Logo réseau
+├── journal_de_bord.md          ← Ce fichier (mis à jour)
+└── README.md
+
+---
+
+## 🚀 Prochaines étapes (session 6)
+
+1. **Brancher le repo sur Vercel** — quand Michèle valide le site
+2. **Désactiver GitHub Pages** — lors du branchement
+3. **Compléter l'adresse de facturation** sur le compte Vercel
+4. **Formulaire de contact** — connecter à Formspree ou fonction Vercel serverless
+5. **Mentions légales + politique de confidentialité RGPD**
+6. **Google Business Profile** en mode zone de service
+7. **Basculer Cal.com** sur le compte définitif de Michèle (`michele@nutrisoins.be`)
+
+---
+
+*Fin de session 5 
