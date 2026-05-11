@@ -183,7 +183,7 @@
             display: block;
             height: 56px;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
 
         .rotate-item {
@@ -194,6 +194,38 @@
             color: var(--ocre);
             transition: opacity 0.5s ease;
             line-height: 56px;
+        }
+
+        /* Sous-titre rotatif */
+        .hero-sub-wrap {
+            position: relative;
+            min-height: 72px;
+            margin-bottom: 28px;
+            max-width: 440px;
+        }
+
+        .hero-sub-slot {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-size: 1.05rem;
+            color: var(--texte-doux);
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+        }
+
+        .hero-sub-slot.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-sub-slot.exit {
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         .hero-desc {
@@ -693,80 +725,6 @@
 
         .apropos-cta:hover { background: var(--ocre-clair); }
 
-        /* ===================== TEMOIGNAGES ===================== */
-        .temoignages {
-            background: var(--vert-olive);
-            padding: 80px 10%;
-            text-align: center;
-        }
-
-        .temoignages .section-label { color: rgba(255,255,255,0.6); }
-
-        .temoignages h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: white;
-            margin-bottom: 50px;
-        }
-
-        .temoignages-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .temoignage {
-            background: rgba(255,255,255,0.08);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: left;
-            border-top: 3px solid var(--ocre);
-        }
-
-        .temoignage-text {
-            font-style: italic;
-            color: rgba(255,255,255,0.85);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .temoignage-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--ocre);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .author-info strong {
-            display: block;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .author-info span {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.8rem;
-        }
-
-        .stars {
-            color: var(--ocre);
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-        }
-
         /* ===================== CONTACT ===================== */
         .contact {
             padding: 90px 10%;
@@ -1023,7 +981,6 @@
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 1024px) {
             .offres-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto 40px; }
-            .temoignages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
             .footer-top { grid-template-columns: 1fr 1fr; }
         }
 
@@ -1033,7 +990,7 @@
             .hero-img img { max-width: 280px; }
             .hero-text h1 { font-size: 2.2rem; }
             .hero-actions { justify-content: center; }
-            .hero-desc { margin: 0 auto 30px; }
+            .hero-sub-wrap { margin-left: auto; margin-right: auto; }
             .methode-inner { grid-template-columns: 1fr; }
             .apropos-inner { grid-template-columns: 1fr; }
             .contact-inner { grid-template-columns: 1fr; }
@@ -1048,12 +1005,11 @@
             .hero-text h1 { font-size: 1.9rem; }
             .rotate-item { font-size: 2rem; }
             .recog h2, .methode-content h2, .offres-header h2,
-            .apropos-content h2, .temoignages h2, .contact-info h2 {
+            .apropos-content h2, .contact-info h2 {
                 font-size: 1.8rem;
             }
             .contact-form { padding: 25px; }
             .offres-grid { max-width: 100%; }
-            .temoignages-grid { max-width: 100%; }
         }
     </style>
 </head>
@@ -1087,7 +1043,24 @@
         <div class="rotate-wrap">
             <span id="rotate" class="rotate-item">Naturellement.</span>
         </div>
-        <p class="hero-desc">Michèle vous accompagne vers une alimentation bienveillante, durable et sans culpabilité — à Namur et en ligne.</p>
+        <!-- Sous-titres rotatifs synchronisés avec le mot -->
+        <div class="hero-sub-wrap" id="hero-sub-wrap">
+            <p class="hero-sub-slot active" data-index="0">
+                Vous en avez assez des régimes qui ne durent pas ? Je vous accompagne vers une alimentation <strong>juste, durable et sans culpabilité</strong> — adaptée à votre vie, pas l'inverse.
+            </p>
+            <p class="hero-sub-slot" data-index="1">
+                Pas de régime. Pas de liste d'interdits. Juste une <strong>approche bienveillante et personnalisée</strong> qui s'inscrit dans votre quotidien pour de bon.
+            </p>
+            <p class="hero-sub-slot" data-index="2">
+                Chaque personne est unique. J'adapte  mon accompagnement <strong>à votre rythme, votre corps, votre vie</strong> — sans jamais vous brusquer.
+            </p>
+            <p class="hero-sub-slot" data-index="3">
+                Fini la guerre avec votre assiette. Je vous aide à retrouver une relation <strong>apaisée et durable avec la nourriture</strong> — et avec vous-même.
+            </p>
+            <p class="hero-sub-slot" data-index="4">
+                Parce que manger bien ne devrait pas rimer avec frustration. <strong>Savourez, sans compter</strong>, en faisant des choix qui vous ressemblent.
+            </p>
+        </div>
         <div class="hero-actions">
             <a href="#contact" class="cta-main">Prendre rendez-vous</a>
             <a href="#methode" class="cta-second">Découvrir ma méthode</a>
@@ -1194,18 +1167,18 @@
             <p class="offre-desc">Un premier échange pour faire connaissance, comprendre votre situation et voir si mon accompagnement est fait pour vous. Sans engagement.</p>
             <ul class="offre-features">
                 <li>Bilan de votre situation actuelle</li>
-                <li>Questions & réponses</li>
+                <li>Questions &amp; réponses</li>
                 <li>Présentation de la méthode</li>
                 <li>En présentiel ou en ligne</li>
             </ul>
             <a href="#contact" class="offre-cta">Prendre contact</a>
         </div>
         <div class="offre-card featured">
-            <span class="featured-badge">⭐ Le plus choisi</span>
+            <span class="featured-badge">⭐ Conseillé</span>
             <div class="offre-icon">🌿</div>
             <h3>Programme Suivi</h3>
-            <div class="offre-price">Sur demande <span>/ 3 mois</span></div>
-            <p class="offre-desc">Un accompagnement complet sur 3 mois pour ancrer de nouvelles habitudes durablement. Idéal pour un changement en profondeur.</p>
+            <div class="offre-price">Sur demande <span>/ 12 semaines</span></div>
+            <p class="offre-desc">Un accompagnement complet sur 12 semaines pour ancrer de nouvelles habitudes durablement. Idéal pour un changement en profondeur.</p>
             <ul class="offre-features">
                 <li>Bilan initial approfondi</li>
                 <li>Plan nutritionnel personnalisé</li>
@@ -1253,47 +1226,6 @@
                 <div class="valeur"><div class="valeur-dot"></div> Expertise certifiée</div>
             </div>
             <a href="#contact" class="apropos-cta">Me contacter</a>
-        </div>
-    </div>
-</section>
-
-<!-- ===================== TÉMOIGNAGES ===================== -->
-<section class="temoignages">
-    <span class="section-label">Témoignages</span>
-    <h2>Ce qu'ils disent de leur expérience</h2>
-    <div class="temoignages-grid">
-        <div class="temoignage">
-            <div class="stars">★★★★★</div>
-            <p class="temoignage-text">Michèle m'a aidée à comprendre pourquoi je prenais du poids malgré mes efforts. Son approche est douce et sans jugement. Pour la première fois, je me sens écoutée.</p>
-            <div class="temoignage-author">
-                <div class="author-avatar">S.M</div>
-                <div class="author-info">
-                    <strong>Sophie M.</strong>
-                    <span>Namur · Programme 3 mois</span>
-                </div>
-            </div>
-        </div>
-        <div class="temoignage">
-            <div class="stars">★★★★★</div>
-            <p class="temoignage-text">J'avais essayé des dizaines de régimes. Avec Michèle, ce n'est pas un régime — c'est un changement de regard sur l'alimentation. Je mange mieux et je me sens mieux.</p>
-            <div class="temoignage-author">
-                <div class="author-avatar">C.D</div>
-                <div class="author-info">
-                    <strong>Catherine D.</strong>
-                    <span>Gembloux · Suivi personnalisé</span>
-                </div>
-            </div>
-        </div>
-        <div class="temoignage">
-            <div class="stars">★★★★★</div>
-            <p class="temoignage-text">Un accompagnement sérieux, humain et vraiment adapté à ma situation. Les conseils sont concrets et réalistes. Je recommande sans hésiter.</p>
-            <div class="temoignage-author">
-                <div class="author-avatar">P.L</div>
-                <div class="author-info">
-                    <strong>Pierre L.</strong>
-                    <span>Suivi en ligne</span>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -1408,20 +1340,44 @@
 </footer>
 
 <script>
-    // Rotation des mots dans le hero
-    const words = ["Naturellement.", "Durablement.", "À votre rythme.", "Sans privation.", "Avec bienveillance."];
-    let i = 0;
-    const el = document.getElementById('rotate');
-    setInterval(() => {
-        el.style.opacity = 0;
-        setTimeout(() => {
-            i = (i + 1) % words.length;
-            el.innerText = words[i];
-            el.style.opacity = 1;
-        }, 500);
-    }, 3500);
+    // ===================== HERO ROTATIF =====================
+    const words = [
+        "Naturellement.",
+        "Durablement.",
+        "À votre rythme.",
+        "Sans privation.",
+        "Avec bienveillance."
+    ];
 
-    // Smooth appear on scroll
+    const subSlots = document.querySelectorAll('.hero-sub-slot');
+    const rotateEl = document.getElementById('rotate');
+    let currentIdx = 0;
+
+    function goToSlide(nextIdx) {
+        // Sortie de l'ancien sous-titre
+        subSlots[currentIdx].classList.remove('active');
+        subSlots[currentIdx].classList.add('exit');
+
+        setTimeout(() => {
+            subSlots[currentIdx].classList.remove('exit');
+            currentIdx = nextIdx;
+            // Mot rotatif
+            rotateEl.style.opacity = 0;
+            setTimeout(() => {
+                rotateEl.innerText = words[currentIdx];
+                rotateEl.style.opacity = 1;
+            }, 250);
+            // Entrée du nouveau sous-titre
+            subSlots[currentIdx].classList.add('active');
+        }, 420);
+    }
+
+    setInterval(() => {
+        const next = (currentIdx + 1) % words.length;
+        goToSlide(next);
+    }, 4000);
+
+    // ===================== SCROLL REVEAL =====================
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1431,14 +1387,14 @@
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.recog-card, .offre-card, .temoignage, .step, .pillier').forEach(el => {
+    document.querySelectorAll('.recog-card, .offre-card, .step, .pillier').forEach(el => {
         el.style.opacity = 0;
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(el);
     });
 
-    // Formulaire (placeholder - à connecter à un backend)
+    // ===================== FORMULAIRE =====================
     document.querySelector('.form-submit').addEventListener('click', () => {
         alert('Merci pour votre message ! Michèle vous répondra dans les 48h.');
     });
