@@ -548,7 +548,7 @@ Migration de l'hébergement de GitHub Pages vers **Vercel** et configuration du 
 - 🟡 GitHub Pages → encore actif (à désactiver lors du branchement)
 
 ### Fichiers dans le repo
-
+```
 e:/nutrisoins/
 ├── index.html                  ← Inchangé cette session
 ├── coach-nutrition-namur.jpg   ← Photo profil
@@ -556,6 +556,7 @@ e:/nutrisoins/
 ├── Image_newtricoach.jpeg      ← Logo réseau
 ├── journal_de_bord.md          ← Ce fichier (mis à jour)
 └── README.md
+```
 
 ---
 
@@ -571,4 +572,247 @@ e:/nutrisoins/
 
 ---
 
-*Fin de session 5 
+*Fin de session 5 — Bonne continuation ! 🌿*
+
+---
+
+# 📓 Journal de bord — Session 6
+
+**Date de la session :** 12 mai 2026  
+**Durée :** ~1 session longue  
+**Participants :** Vince (porteur du projet) + Claude (consultant stratégique)
+
+---
+
+## 🎯 Objectif de la session
+
+Finaliser deux des chantiers en attente :
+1. Formulaire de contact fonctionnel
+2. Mentions légales + politique de confidentialité RGPD
+
+Plus quelques améliorations UX et esthétiques.
+
+---
+
+## ✅ Réalisations
+
+### 1. Formulaire de contact — connexion Formspree
+- ✅ Compte Formspree créé — endpoint `https://formspree.io/f/xrejjlqz`
+- ✅ Destination des messages : `renault.demptinne@gmail.com` (modifiable depuis le dashboard Formspree sans toucher au code)
+- ✅ Transformation du faux `<div>` en vrai `<form>` HTML avec attributs `name` corrects
+- ✅ Soumission **Ajax via `fetch`** (pas de rechargement de page)
+- ✅ Gestion complète des états :
+  - Pendant l'envoi : bouton grisé + "Envoi en cours…" → empêche double-clic
+  - Succès : formulaire masqué, encart de confirmation affiché avec le **logo lotus NUTRISOINS** (au lieu de l'emoji ✅ générique)
+  - Erreur : message contextuel + bouton réactivé
+- ✅ Champ honeypot `_gotcha` anti-spam (invisible aux humains)
+- ✅ Validation HTML native (`required` sur tous les champs essentiels)
+- ✅ Abandon de la lib `@formspree/ajax` CDN au profit d'un `fetch` direct (plus léger, plus fiable, sans dépendance externe)
+
+### 2. Mentions légales (`mentions-legales.html`)
+Nouvelle page créée avec :
+- Éditeur : Michèle Renault-Demptinne, indépendante à titre complémentaire
+- BCE marqué "en cours d'attribution" avec note explicative (à mettre à jour dès réception)
+- Hébergeur : Vercel Inc. (anticipation de la migration future)
+- Propriété intellectuelle (avec mention de l'autorisation d'usage du logo Newtrition Coach)
+- Disclaimer médical encadré
+- Liens tiers, droit applicable belge, juridiction Namur
+- Charte graphique calée sur celle du site (mêmes variables CSS, mêmes polices)
+
+### 3. Politique de confidentialité RGPD (`politique-confidentialite.html`)
+Nouvelle page créée avec :
+- Responsable de traitement clairement identifié
+- Données collectées (uniquement via formulaire — pas de tracking)
+- Tableau finalités / bases légales (art. 6.1.b et 6.1.f RGPD)
+- Destinataires : Formspree (sous-traitant) + Cal.com
+- Durées de conservation (3 ans messages / 5 ans comptable)
+- Section spécifique Cal.com
+- Mention claire "aucun cookie de tracking"
+- Les 6 droits RGPD détaillés
+- Coordonnées APD belge pour les réclamations
+
+### 4. Connexion des liens du footer
+- ✅ "Mentions légales" → `mentions-legales.html`
+- ✅ "Politique de confidentialité" → `politique-confidentialite.html`
+- ✅ "Newtrition Coach" → `https://newtritioncoach.org/` (était un lien mort `#`)
+- ✅ Logo Facebook → `https://www.facebook.com/profile.php?id=61589545773180`
+
+### 5. Logo Newtrition Coach — affichage dans la section Méthode
+- ✅ Michèle a obtenu l'autorisation d'utiliser le logo Newtrition Coach
+- ✅ Référence corrigée dans `index.html` : `Image_newtricoach.jpeg` (inexistant) → `Image_newtricoach.svg` (existant)
+- ✅ Logo rendu cliquable → lien vers `https://newtritioncoach.org/` avec `rel="noopener noreferrer"`
+
+### 6. Favicon
+- ✅ Ajout du logo lotus NUTRISOINS comme favicon (`<link rel="icon" type="image/svg+xml" href="logo_nutrisoins.svg">`)
+- ✅ Appliqué sur les 3 pages (index + 2 pages légales)
+
+---
+
+## ⚠️ Points de vigilance soulevés
+
+### Mentions légales — à mettre à jour
+- 📌 **Numéro BCE** : dès réception, remplacer la mention "en cours d'attribution" dans `mentions-legales.html`
+- 📌 Si l'hébergeur change finalement (rester sur GitHub Pages plutôt que migrer vers Vercel), ajuster la section hébergeur
+
+### Cohérence visuelle — chantier futur
+- 📌 Le chat IA d'onboarding (`C:\nutrisoins_ia`) utilise une palette verte (`#2D8B6F`) différente du site vitrine (`#3E4B31`). À harmoniser **plus tard**, dans le cadre d'une refonte plus large du chat (revue du prompt système + création d'une page admin pour Michèle).
+
+### Esthétique — à venir
+- 📌 Remplacement des **emojis** (🌿 🎓 🤝 📍 ✉️ 💻 ⭐ 🌱 🌾…) par des **icônes SVG** sur-mesure dans la teinte ocre (`#B56A3A`)
+- Décision : génération des icônes via Gemini avec un brief précis (style line-icons minimalistes, stroke fin, cohérent avec le logo lotus)
+- Brief de génération sauvegardé dans le condensé du journal
+
+---
+
+## 🐛 Problèmes techniques rencontrés et résolus
+
+| Problème | Solution appliquée |
+|----------|-------------------|
+| Lib `@formspree/ajax` ne déclenchait pas l'affichage de la confirmation `data-fs-success` | Abandon de la lib, réécriture en `fetch` natif avec gestion manuelle des états DOM |
+| Risque que l'utilisateur renvoie plusieurs messages | Verrouillage `disabled` du bouton pendant l'envoi + masquage complet du formulaire en cas de succès |
+| Image Newtrition Coach cassée (icone d'image brisée dans le HTML) | Référence `.jpeg` corrigée en `.svg` |
+| Liens morts dans le footer (`href="#"`) | Tous remplacés par les vraies URLs (pages internes + réseau + Facebook) |
+
+---
+
+## 📋 État actuel du projet (fin session 6)
+
+### Fichiers dans le repo
+```
+C:/nutrisoins/
+├── index.html                       ← Formulaire fonctionnel, footer câblé, favicon
+├── mentions-legales.html            ← NOUVEAU
+├── politique-confidentialite.html   ← NOUVEAU
+├── coach-nutrition-namur.jpg        ← Photo profil
+├── logo_nutrisoins.svg              ← Logo (header, à propos, accusé envoi, favicon)
+├── Image_newtricoach.svg            ← Logo réseau (autorisé, cliquable)
+├── journal_de_bord.md               ← Archive complète (ce fichier)
+└── README.md
+```
+
+### État des sections du site
+- 🟢 Hero : OK
+- 🟢 Pilliers : OK
+- 🟢 Identification : OK
+- 🟢 Méthode : OK (logo Newtrition cliquable)
+- 🟢 Offres : OK (3 CTA Cal.com)
+- 🟢 À propos : OK
+- 🟢 Contact : **formulaire FONCTIONNEL** ✅
+- 🟢 Footer : OK (tous liens câblés)
+- 🟢 Mentions légales : OK (BCE à actualiser)
+- 🟢 Politique RGPD : OK
+
+### Chantiers du début de session 6 — statut
+- 🟢 1. Formulaire contact fonctionnel — **TERMINÉ**
+- 🟢 2. Mentions légales + RGPD — **TERMINÉ**
+- 🟡 3. Google Business Profile zone de service — à faire
+- 🟡 4. Branchement repo sur Vercel + désactivation GitHub Pages — à faire
+- 🟡 5. Bascule Cal.com sur compte définitif Michèle — à faire
+
+---
+
+## 🚀 Prochaines étapes (session 7)
+
+1. **Icônes SVG sur-mesure** — génération via Gemini + intégration
+2. **Branchement repo sur Vercel** + désactivation GitHub Pages (le DNS `nutrisoins.be` est déjà prêt depuis la session 5)
+3. **Google Business Profile** en mode zone de service
+4. **Bascule Cal.com** sur le compte définitif de Michèle
+
+### Chantier futur (hors session courte)
+- **Refonte du chat IA d'onboarding** (`C:\nutrisoins_ia`) :
+  - Revue du prompt système de l'IA
+  - Harmonisation graphique avec la charte du site
+  - Création d'une page admin pour Michèle (consultation des résumés, gestion des liens token)
+  - Workflow d'envoi automatique du lien d'onboarding après réservation Cal.com
+
+---
+
+## 💡 Notes & observations (session 6)
+
+- **Pattern journal long + condensé** mis en place à partir de cette session :
+  - `journal_de_bord.md` reste l'archive détaillée dans le repo
+  - `journal_condense.md` (dans les fichiers du projet Claude) sert de mémoire de travail pour les prochaines sessions
+- **Le `fetch` natif est souvent plus fiable que les libs JS tierces** pour des cas simples comme un formulaire. La lib `@formspree/ajax` ajoutait de la complexité et une dépendance réseau sans valeur ajoutée pour notre cas.
+- **Le favicon SVG** est supporté par tous les navigateurs modernes — plus besoin d'exporter en `.ico` ou de générer plusieurs résolutions PNG. Bonus : il reste net à toute taille.
+
+---
+
+*Fin de session 6 — Bonne continuation ! 🌿*
+
+---
+
+# 📓 Journal de bord — Session 7
+
+**Date de la session :** 12 mai 2026  
+**Durée :** ~1 session courte  
+**Participants :** Vince (porteur du projet) + Claude (consultant stratégique)
+
+---
+
+## 🎯 Objectif de la session
+
+Appliquer les corrections demandées par Michèle après sa première revue complète du site.
+
+---
+
+## ✅ Réalisations
+
+### Corrections `index.html`
+
+| # | Zone | Modification |
+|---|------|--------------|
+| 1 | Hero — JS | Vitesse de rotation : `7000ms` → **`9000ms`** |
+| 2 | Offres — carte gauche | **Séance Découverte** supprimée, remplacée par **Séance Ponctuelle** (repositionnée) |
+| 3 | Offres — carte droite | Ancienne Séance Ponctuelle remplacée par **Suivi Programme** (séances de suivi du programme 12 semaines) |
+| 4 | Méthode — étape 2 | Texte "Construction d'un programme nutritionnel adapté à vous, pas à un archétype théorique." → nouveau texte sur-mesure de Michèle |
+| 5 | À propos — titre | "Bonjour, je suis Michèle" → **"Je m'appelle Michèle"** |
+| 6 | À propos — 1er §  | Reformulation : "Coach en nutrition certifiée basée près de Namur, j'accompagne…" → "Je suis coach en nutrition certifiée, basée près de Namur. J'accompagne…" |
+| 7 | Contact — cabinet | "Waret-la-Chaussée" → **"Eghezée"** |
+
+### Correction `mentions-legales.html`
+
+| # | Zone | Modification |
+|---|------|--------------|
+| 8 | Éditeur — zone d'activité | "Waret-la-Chaussée et région namuroise (Belgique)" → **"Eghezée et région namuroise"** |
+
+### Réorganisation des offres — logique retenue
+Nouvelle grille (gauche → centre → droite) :
+1. **Séance Ponctuelle** — conseil ciblé, présentiel ou en ligne
+2. **Programme Suivi 12 semaines** ⭐ Conseillé — accompagnement complet (centre, inchangé)
+3. **Suivi Programme** — séances de suivi dans le cadre du programme 12 semaines
+
+Lien Cal.com de la 3e carte : `/suivi` (slug modifié directement dans le dashboard Cal.com par Vince).
+
+---
+
+## 🐛 Problèmes techniques rencontrés et résolus
+
+Aucun — session propre.
+
+---
+
+## 📋 État actuel du projet (fin session 7)
+
+### Fichiers modifiés ce commit
+- `index.html` — 7 modifications
+- `mentions-legales.html` — 1 modification
+
+### État des sections du site
+- 🟢 Hero : rotation 9s
+- 🟢 Offres : nouvelle grille (Ponctuelle / Programme 12s ⭐ / Suivi Programme)
+- 🟢 Méthode étape 2 : texte mis à jour
+- 🟢 À propos : titre et intro reformulés
+- 🟢 Contact / Mentions légales : localisation → Eghezée
+
+---
+
+## 🚀 Prochaines étapes (session 8)
+
+1. **Icônes SVG sur-mesure** — génération via Gemini + intégration
+2. **Branchement repo sur Vercel** + désactivation GitHub Pages
+3. **Google Business Profile** en mode zone de service
+4. **Bascule Cal.com** sur le compte définitif de Michèle
+
+---
+
+*Fin de session 7 — Bonne continuation ! 🌿*
