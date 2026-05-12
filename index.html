@@ -1435,11 +1435,49 @@
         observer.observe(el);
     });
 
-    // ===================== FORMULAIRE — Formspree Ajax =====================
-    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-    formspree('initForm', { formElement: '#contact-form', formId: 'xrejjlqz' });
+    // ===================== FORMULAIRE — Formspree fetch =====================
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn   = contactForm.querySelector('[data-fs-submit-btn]');
+    const successBox  = document.querySelector('[data-fs-success]');
+    const errorBox    = document.querySelector('[data-fs-error]');
+
+    contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Verrouillage immédiat
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours…';
+        errorBox.style.display = 'none';
+
+        try {
+            const res = await fetch('https://formspree.io/f/xrejjlqz', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(contactForm)
+            });
+
+            if (res.ok) {
+                // Masquer le formulaire, afficher la confirmation
+                contactForm.style.display = 'none';
+                successBox.style.display  = 'block';
+            } else {
+                const data = await res.json();
+                const msg  = data.errors
+                    ? data.errors.map(err => err.message).join(', ')
+                    : 'Une erreur est survenue. Réessayez dans quelques instants.';
+                errorBox.textContent    = msg;
+                errorBox.style.display  = 'block';
+                submitBtn.disabled      = false;
+                submitBtn.textContent   = 'Envoyer mon message →';
+            }
+        } catch (_) {
+            errorBox.textContent   = 'Problème de connexion. Vérifiez votre réseau et réessayez.';
+            errorBox.style.display = 'block';
+            submitBtn.disabled     = false;
+            submitBtn.textContent  = 'Envoyer mon message →';
+        }
+    });
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
