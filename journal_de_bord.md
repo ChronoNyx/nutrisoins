@@ -816,3 +816,133 @@ Aucun — session propre.
 ---
 
 *Fin de session 7 — Bonne continuation ! 🌿*
+
+---
+
+# Session 8 — 12 mai 2026
+## Mise en production + Google Business Profile + SEO technique
+
+---
+
+## 🎯 Objectifs de la session
+1. Mettre `nutrisoins.be` en production sur Vercel
+2. Créer et configurer Google Business Profile
+3. Compléter le SEO technique du site
+
+---
+
+## 🚀 Mise en production Vercel
+
+### Contexte
+- Le projet Vercel `project-coach` héberge déjà le chat IA d'onboarding → ne pas toucher
+- Nouveau projet Vercel créé pour le site vitrine
+- Adresse de facturation Vercel complétée par Vince avant la session
+
+### Étapes réalisées
+1. Nouveau projet Vercel créé → import repo `ChronoNyx/nutrisoins`
+2. Framework preset : **"Other"** (HTML statique)
+3. Domaine `nutrisoins.be` + `www.nutrisoins.be` connecté → Valid instantanément
+4. GitHub Pages désactivé (Settings → Pages → Source : None)
+
+---
+
+## 📍 Google Business Profile
+
+### Création du compte Google
+- Adresse créée : `nutrisoins.be@gmail.com`
+- Compte dédié NUTRISOINS (pas le compte personnel de Vince)
+- Objectif futur : basculer sur `michele@nutrisoins.be` via Google Workspace
+
+### Configuration de la fiche
+| Champ | Valeur |
+|-------|--------|
+| Nom | Nutrisoins |
+| Catégorie | Coach personnel pour femmes |
+| Adresse | Masquée (domicile) |
+| Zone de service | Éghezée + Namur + Belgique |
+| Téléphone | Non renseigné (pas de numéro pro) |
+| Site web | `nutrisoins.be` |
+| Logo | `logo_nutrisoins.svg` converti en PNG 500x500 |
+| Description | Texte SEO optimisé (voir ci-dessous) |
+
+### Description Google Business (749 caractères)
+> Coach en nutrition certifiée à Éghezée, région de Namur, j'accompagne essentiellement les femmes qui souhaitent retrouver un équilibre alimentaire durable — sans régimes punitifs ni culpabilité. Mon engagement est né d'une conviction profonde : bien manger ne devrait pas être une source de stress. Formée par le réseau Newtrition Coach, j'ai acquis les outils pour vous aider à construire une relation sereine et durable avec la nourriture. Mon approche est bienveillante, progressive et toujours adaptée à votre réalité du quotidien. Parce que le meilleur programme de coaching nutritionnel, c'est celui que vous pouvez tenir sur le long terme.
+
+### Horaires configurés
+| Jour | Horaires |
+|------|----------|
+| Lun, Mar, Jeu | 17:00 – 20:00 |
+| Mer | 16:00 – 20:00 |
+| Ven | 16:00 – 19:00 |
+| Sam | 10:00 – 13:00 / 14:00 – 18:00 |
+
+---
+
+## 🔧 SEO technique
+
+### Schema.org LocalBusiness — mis à jour
+Modifications apportées au bloc existant dans `index.html` :
+- ✅ Adresse précise "Waret-la-Chaussée" supprimée → "Éghezée"
+- ✅ `areaServed` étendu : Éghezée + Namur
+- ✅ Horaires ajoutés (`openingHoursSpecification`)
+- ✅ Lien Cal.com ajouté (`makesOffer`)
+- ✅ Mention périménopause/ménopause ajoutée dans la description
+
+### Nouveaux fichiers créés
+- `sitemap.xml` — liste les 3 pages du site avec priorités
+- `robots.txt` — `Allow: /` + référence au sitemap
+
+### Google Search Console
+- Propriété `https://nutrisoins.be` créée (méthode : balise HTML)
+- Balise de vérification ajoutée dans `<head>` de `index.html`
+- Sitemap soumis → état **"Opération effectuée"**, 3 pages découvertes
+
+---
+
+## 📦 Commits de la session
+
+```
+git commit -m "SEO : Schema.org mis à jour — horaires, zone, périménopause"
+git commit -m "SEO : ajout sitemap.xml et robots.txt"
+git commit -m "SEO : balise vérification Google Search Console"
+```
+
+---
+
+## 🐛 Problèmes rencontrés et résolus
+
+| # | Problème | Solution |
+|---|----------|----------|
+| 1 | Adresse précise visible publiquement sur Google Business | Masquée + zone de service configurée |
+| 2 | Numéro de téléphone personnel affiché | Supprimé |
+| 3 | Catégorie "Coach particulier" inadaptée | Remplacée par "Coach personnel pour femmes" |
+| 4 | Sitemap "impossible de récupérer" | Délai Vercel — résolu après 2-3 min |
+
+---
+
+## 📋 État actuel du projet (fin session 8)
+
+### Fichiers modifiés
+- `index.html` — Schema.org + balise Search Console
+- `sitemap.xml` — nouveau
+- `robots.txt` — nouveau
+
+### Nouveaux outils actifs
+- 🟢 Vercel — déploiement auto sur push `main`
+- 🟢 Google Business Profile — fiche active (`nutrisoins.be@gmail.com`)
+- 🟢 Google Search Console — validée, sitemap soumis
+
+---
+
+## 🚀 Prochaines étapes (session 9)
+
+1. **Bascule Cal.com** sur le compte définitif de Michèle
+2. **Numéro BCE** à mettre à jour dans `mentions-legales.html`
+3. **Photo de Michèle** sur la fiche Google si elle accepte
+4. **Numéro de téléphone pro** quand disponible
+5. **Vérifier attributs `alt`** sur les images du site
+6. **Icônes SVG sur-mesure** (Gemini)
+
+---
+
+*Fin de session 8 — Bonne continuation ! 🌿*
