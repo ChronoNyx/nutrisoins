@@ -946,3 +946,394 @@ git commit -m "SEO : balise vérification Google Search Console"
 ---
 
 *Fin de session 8 — Bonne continuation ! 🌿*
+
+---
+
+# Session 9 — 14 mai 2026
+## Ajustement SEO snippet Google + refonte du favicon
+
+---
+
+## 🎯 Objectifs de la session
+
+1. Recalibrer le snippet affiché par Google sur les requêtes génériques (ne plus mentionner la périménopause/ménopause par défaut)
+2. Préserver le SEO sur les requêtes ciblées (femmes 40+, ménopause)
+3. Remplacer le favicon SVG inline par des fichiers PNG/ICO compatibles Google Search
+4. Améliorer la lisibilité du favicon aux petites tailles (16/32px)
+
+---
+
+## 🔍 Contexte SEO
+
+Observation initiale (recherche Google "coach nutrition Eghezée") :
+- Nutrisoins remonte en **2ème page** après seulement quelques jours en ligne — bon début
+- **Mais** le snippet affiché reprend la spécialisation ménopause de manière trop frontale :
+  > "Coach en nutrition à Namur. Michèle accompagne les femmes, spécialement 40 ans et plus et en périménopause/ménopause, vers un équilibre alimentaire durable."
+- Cible souhaitée : message généraliste accueillant qui n'exclut pas les femmes plus jeunes, tout en restant trouvable sur les requêtes "coach ménopause Namur"
+
+### Diagnostic technique
+- Le snippet correspond mot pour mot à la `<meta name="description">` actuelle
+- Schema.org `description` contenait aussi la mention ménopause
+- Le **corps de la page** était lui parfaitement généraliste — c'est uniquement la balise meta qui surspécialisait
+- Stratégie : meta description généraliste + Schema.org structuré (généraliste puis spécialisé) + ajout d'un paragraphe ciblé dans "À propos" pour conserver le SEO sur les requêtes ménopause
+
+---
+
+## ✅ Modifications SEO
+
+### `index.html` — Meta description
+
+**Avant :**
+```html
+<meta name="description" content="Coach en nutrition à Namur. Michèle accompagne les femmes, spécialement 40 ans et plus et en périménopause/ménopause, vers un équilibre alimentaire durable. En présentiel et en ligne.">
+```
+
+**Après :**
+```html
+<meta name="description" content="Coach en nutrition à Eghezée (Namur). Michèle accompagne les femmes vers un équilibre alimentaire durable — sans régimes punitifs ni culpabilité. Consultations en présentiel ou en ligne.">
+```
+
+**Justifications :**
+- "Coach en nutrition à **Eghezée (Namur)**" → cible la recherche locale prioritaire (Eghezée) en gardant Namur visible
+- "accompagne les **femmes**" → conserve le ciblage genre sans surspécialiser
+- "**sans régimes punitifs ni culpabilité**" → met en avant la promesse de marque, plus engageant que la formulation générique précédente
+- **158 caractères** → ne sera pas tronquée par Google
+- Plus de mention ménopause → la femme de 30 ans qui cherche un coach ne se sent pas exclue
+
+### `index.html` — Schema.org `description`
+
+Le champ a été **gardé tel quel** (structure généraliste → spécialisé), avec une seule correction de vocabulaire demandée par Michèle :
+- "Coach en nutrition **bienveillante**" → "Coach en nutrition **et bien-être**"
+
+La mention ménopause reste dans ce champ : Google peut ainsi piocher la version pertinente selon la requête (généraliste pour les requêtes larges, spécialisée pour les rich results ciblés).
+
+### `index.html` — Section "À propos"
+
+Ajout d'un nouveau paragraphe entre le 1er et le 2e paragraphe existants :
+
+> "J'accompagne particulièrement les femmes de 40 ans et plus, notamment en périménopause et ménopause, période où le corps change et où l'alimentation joue un rôle clé pour retrouver énergie, équilibre et sérénité."
+
+**Objectif :** fournir à Google une vraie phrase exploitable comme snippet pour les requêtes ciblées ("coach ménopause Namur", "nutrition périménopause"). Ainsi on conserve le SEO sur ces requêtes à forte intention de conversion sans pour autant les imposer dans le snippet par défaut.
+
+### Google Search Console — réindexation demandée
+
+- Première tentative immédiate : message "Traitement des données en cours, veuillez réessayer dans un jour environ" (URL trop fraîche dans la console)
+- Reportée au lendemain — le sitemap pousse aussi le crawl automatiquement
+- **Délai estimé avant nouveau snippet visible :** 3 à 14 jours
+
+---
+
+## 🎨 Refonte du favicon
+
+### Problème identifié
+
+Google Search affichait un globe gris générique à côté du résultat `nutrisoins.be` au lieu du logo. Cause : le favicon était un **SVG inline en data-URI** (encodé dans l'attribut `href` du `<link rel="icon">`).
+
+Google ne lit pas toujours correctement les favicons SVG en data-URI — il préfère des **fichiers physiques** (PNG/ICO) accessibles à des URLs propres.
+
+### Solution mise en place
+
+Génération d'un **set complet de favicons physiques** depuis le SVG du logo lotus, en plusieurs tailles couvrant tous les usages :
+
+| Fichier | Taille | Usage |
+|---------|--------|-------|
+| `favicon.ico` | multi (16/32/48) | Compatibilité Google Search + vieux navigateurs |
+| `favicon-16.png` | 16x16 | Onglets, barre de favoris |
+| `favicon-32.png` | 32x32 | Onglets HD, raccourcis bureau |
+| `favicon-192.png` | 192x192 | Android Chrome |
+| `favicon-512.png` | 512x512 | **Recommandé par Google Search** |
+| `apple-touch-icon.png` | 180x180 | iOS (écran d'accueil) |
+
+### Itération sur les couleurs
+
+Première version générée : **cercle ocre `#B56A3A` + lotus blanc + point ocre** (identique au header du site).
+
+**Problème constaté visuellement** : à 32px et 16px, les traits fins du lotus blanc se perdaient sur l'ocre — contraste insuffisant.
+
+**Test comparatif** : génération de 7 combinaisons de couleurs issues de la palette du site, avec analyse à 16px et 32px.
+
+**Version retenue (#04) :**
+- 🟫 Fond crème (`#FDFBF8`)
+- 🌿 Lotus vert olive (`#3E4B31`)
+- 🟠 Point chakra ocre (`#B56A3A`) — conserve l'accent de marque
+
+Ce choix maximise la lisibilité à toutes les tailles (gros contraste fond clair / lotus très foncé), reste 100% dans la palette du site et améliore l'accessibilité.
+
+### Mise à jour du HTML
+
+**Avant** (1 ligne très longue avec SVG inline encodé) :
+```html
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg ...">
+```
+
+**Après** (6 lignes propres, fichiers physiques) :
+```html
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+```
+
+**Note importante** : `logo_nutrisoins.svg` est **conservé** dans le repo — il sert toujours pour le header du site, la confirmation du formulaire et la section À propos. Le favicon est une déclinaison distincte.
+
+---
+
+## 🐛 Problèmes rencontrés et résolus
+
+| # | Problème | Solution |
+|---|----------|----------|
+| 1 | Search Console : pas de bouton "Demander une indexation" | URL trop fraîche dans la console — attendre 24h, le sitemap déclenche aussi le crawl |
+| 2 | Favicon blanc sur ocre peu lisible à 16/32px | Comparaison de 7 combinaisons → choix de vert olive sur crème |
+| 3 | Après push des favicons, l'ancien favicon restait visible | `index.html` n'avait pas été poussé (seuls les nouveaux PNG l'avaient été) — diagnostiqué via `git status` |
+
+---
+
+## 📦 Commits de la session
+
+```
+git commit -m "SEO: meta description généraliste + ajout expertise 40+/ménopause dans À propos"
+git commit -m "Favicon: remplacement SVG inline par fichiers PNG/ICO multi-résolutions (compatible Google Search)"
+git commit -m "Favicon: nouvelle version vert olive sur fond crème (meilleure lisibilité à 16/32px)"
+git commit -m "Favicon: bascule HTML vers fichiers PNG/ICO + maj journal"
+```
+
+---
+
+## 📋 État actuel du projet (fin session 9)
+
+### Fichiers modifiés / ajoutés
+- `index.html` — meta description, Schema.org `description`, paragraphe À propos, balises favicon
+- `favicon.ico` — nouveau
+- `favicon-16.png` — nouveau
+- `favicon-32.png` — nouveau
+- `favicon-192.png` — nouveau
+- `favicon-512.png` — nouveau
+- `apple-touch-icon.png` — nouveau
+- `journal_de_bord.md` — session 9 ajoutée
+- `journal_condense.md` — synchronisé
+
+### Snippet Google attendu (sous 3-14 jours)
+> **Coach en nutrition à Eghezée (Namur)**
+> *Michèle accompagne les femmes vers un équilibre alimentaire durable — sans régimes punitifs ni culpabilité. Consultations en présentiel ou en ligne.*
+
+### Favicon visible (immédiat sur navigateur après vidage cache, 1-4 semaines pour Google Search)
+Lotus vert olive sur cercle crème avec point chakra ocre.
+
+---
+
+## 🚀 Prochaines étapes (session 10)
+
+1. **Vérifier le nouveau snippet Google** sur "coach nutrition Eghezée" (sous 2 semaines)
+2. **Vérifier l'apparition** sur "coach nutrition ménopause Namur" ou similaires
+3. **Bascule Cal.com** sur le compte définitif de Michèle
+4. **Numéro BCE** à mettre à jour dans `mentions-legales.html` dès réception
+5. **Photo de Michèle** sur la fiche Google si elle accepte
+6. **Numéro de téléphone pro** quand disponible
+7. **Vérifier attributs `alt`** sur les images du site
+8. **Icônes SVG sur-mesure** (Gemini)
+
+---
+
+*Fin de session 9 — Bonne continuation ! 🌿*
+
+---
+
+# Session 10 — 15 mai 2026
+## Diagnostic global du site + Sprint 1 (corrections de surface) + Sprint 2 (analytics) + audit Facebook
+
+---
+
+## 🎯 Objectifs de la session
+
+1. Conduire un **diagnostic global** du site (technique, UX, SEO, conversion, business)
+2. Exécuter le **Sprint 1** — corrections de surface urgentes
+3. Exécuter le **Sprint 2** — installation analytics + audit Facebook
+4. Cartographier les améliorations restantes par ordre d'impact
+
+---
+
+## 🔍 Diagnostic global — synthèse
+
+Analyse complète du repo + site live + paysage concurrentiel local. Le site est **propre, professionnel et au-dessus de la moyenne** des coachs solos belges — les 9 sessions précédentes se voient. Les leviers identifiés sont des **optimisations** de niveau supérieur, pas des correctifs critiques.
+
+Diagnostic organisé en **6 niveaux d'urgence/impact**, avec un plan d'action en 5 sprints. Le détail complet est dans le `journal_condense.md`.
+
+---
+
+## ✅ Sprint 1 — Corrections de surface (faites cette session)
+
+### Bugs et incohérences corrigés dans `index.html`
+
+| # | Zone | Avant | Après |
+|---|---|---|---|
+| 1 | Schema.org `makesOffer.url` | `cal.com/vincent-qxx86o` | `cal.com/nutrisoins` |
+| 2 | CTA hero principal | `cal.com/vincent-qxx86o` | `cal.com/nutrisoins` |
+| 3 | Hero rotatif slot 3 | `J'adapte  mon` (double espace) | `J'adapte mon` |
+| 4 | Offre Ponctuelle | `Bilan partiel` (ambigu) | `Mise au point ciblée` |
+| 5 | Offre Programme | `présenciel` | `présentiel` |
+| 6 | H2 À propos | `Je m'appelle Michèle,` (cassé sémantiquement) | `Je m'appelle Michèle — coach en nutrition à Eghezée` |
+| 7 | À propos para 1 | `j'accompagne essentiellement les femmes` | `j'accompagne principalement les femmes` |
+| 8 | Footer copyright | `© 2025` | `© 2026` |
+
+La modif #6 glisse un **mot-clé local dans un H2** — bénéfice SEO secondaire au-delà de la simple correction sémantique.
+
+La bascule des liens Cal.com de `vincent-qxx86o` (compte test) vers `nutrisoins` (compte de production) **finalise un des chantiers en attente depuis la session 4**.
+
+---
+
+## ✅ Sprint 2 — Analytics + audit Facebook (faits cette session)
+
+### Installation de Cloudflare Web Analytics
+
+**Outil choisi :** Cloudflare Web Analytics (gratuit à vie, sans cookies, sans bandeau RGPD requis).
+
+**Comparaison réalisée** entre Cloudflare, Umami self-hosted (Vercel + Postgres) et Plausible (~9€/mois). Cloudflare retenu pour : coût zéro, install 5 min, pas de DB à gérer, données essentielles couvertes (trafic, sources, devices, pays). Si besoin d'events custom plus tard, Umami peut s'ajouter à côté sans casser Cloudflare.
+
+**Compte créé** sur dash.cloudflare.com avec l'adresse `nutrisoins.be@gmail.com` (même que Google Business). Site `nutrisoins.be` ajouté en mode "Manually add a site" puisque le DNS reste chez OVH.
+
+**Token généré :** `8d81dd2ad83443f589fc4e85743e0654`
+
+**Snippet injecté** dans les 3 pages HTML (`index.html`, `mentions-legales.html`, `politique-confidentialite.html`), juste avant `</body>` :
+
+```html
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8d81dd2ad83443f589fc4e85743e0654"}'></script>
+<!-- End Cloudflare Web Analytics -->
+```
+
+### Mise à jour `politique-confidentialite.html` — conformité RGPD
+
+La politique RGPD a été enrichie pour mentionner Cloudflare Web Analytics :
+
+- **§2 (notice-box)** : reformulée — "Aucune donnée d'identification n'est collectée à votre insu. Une mesure d'audience anonyme et agrégée est mise en œuvre via Cloudflare Web Analytics (voir section 8)."
+- **§7 (Cookies)** : clarifié — "aucun cookie" reste exact (Cloudflare n'en pose pas)
+- **§8 NOUVEAU** : section dédiée à Cloudflare Web Analytics, détaillant les 4 critères d'exemption de consentement (pas de cookie, pas d'IP stockée, pas d'identifiant unique, données agrégées). Référence aux lignes directrices CEPD/CNIL/APD pour les outils de mesure d'audience anonymes. Lien vers la politique Cloudflare.
+- **§8/9/10 renumérotés en §9/10/11**
+
+Le site reste **sans bandeau cookies** — le traitement Cloudflare Web Analytics est exempté de consentement préalable car strictement anonyme.
+
+### Refonte du footer (icon Facebook + retrait Instagram)
+
+Dans `index.html`, section `.footer-social` :
+
+**Avant :**
+```html
+<a href="...instagram...">📷</a>
+<a href="...facebook...">📘</a>
+```
+
+**Après :**
+```html
+<a href="https://www.facebook.com/profile.php?id=61589545773180" ...>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 ..."/>
+    </svg>
+</a>
+```
+
+- **Instagram retiré** — Michèle ne maîtrise pas l'outil, lien actif vers profil non alimenté = anti-conversion
+- **Facebook conservé** — 4 publications, Michèle maîtrise l'outil, c'est son canal social principal
+- **Emoji 📘 remplacé par SVG officiel Facebook** — hérite de `currentColor` (gris doux par défaut, blanc sur fond ocre au hover, comportement géré par le CSS existant)
+- **`aria-label`** ajouté pour l'accessibilité
+
+### Audit de la page Facebook NUTRISOINS
+
+**Accès constaté (capture Meta Business Suite) :** Vince a un **accès partiel** à la page — peut publier, répondre aux messages, voir les stats, mais **ne peut pas** modifier le nom, la catégorie, l'adresse, ni gérer les autres utilisateurs.
+
+**État actuel de la page observé :**
+- Nom : "Michèle Renault - Nutrisoins - Newtrition Coach"
+- 38 followers, 4 publications, page active (post du 11 mai)
+- Catégorie : "Coach personnel" ✅
+- Description courte : OK, fidèle à l'esprit du site
+- 3 langues déclarées : FR/EN/NL
+- ⚠️ **Adresse personnelle de Michèle affichée** : "rue des bruyeres 256, 5310" (fuite de vie privée)
+- ⚠️ "Habite à Namur" affiché (info perso inutile)
+- ⚠️ Nom de page non conforme aux décisions du journal ("Michèle" uniquement) + risque d'usurpation marque Newtrition
+- ⚠️ URL en chiffres `profile.php?id=...` au lieu d'un handle propre
+
+**Mémo de réglages élaboré** (catégories, nom de page, handle `@nutrisoins`, zone de service, photo de couverture, bouton CTA, etc.) avec discussion des 3 options pour le nom :
+- A. `NUTRISOINS` (simple, zéro risque)
+- B. `NUTRISOINS — Coach Newtrition à Eghezée` (recommandée)
+- C. `Michèle Renault - Nutrisoins - Newtrition Coach` (risque marque + vie privée)
+
+**Décision (utilisateur)** : *"Le nécessaire a été fait avec Michèle"* — le sujet Facebook est **sorti du backlog actif**. Ne pas le rouvrir spontanément dans les sessions futures. La page reste avec un accès partiel pour Vince.
+
+### Mini-formation "positionnement local Facebook"
+
+Explication des 3 leviers SEO local (catégorie / zone géographique / cohérence NAP entre site, Google Business, Facebook). Évoqué que la page tierce `OkHoreca` (autre projet de Vince, contrôle total) peut servir de bac à sable pour s'entraîner sur les mêmes interfaces.
+
+---
+
+## 📊 Méthodologie de session — leçon apprise
+
+**Friction constatée** : Claude a eu tendance à enchainer plusieurs sujets en parallèle (Cal.com + Instagram + réglages Facebook + Sprint 3), ce qui a généré deux interruptions explicites (`STOP`, `pas à pas`).
+
+**Convention retenue pour les sessions futures :**
+- Une seule action à la fois
+- Attendre confirmation avant de passer à la suivante
+- Éviter les fenêtres de choix multiples répétitives (l'utilisateur préfère la conversation libre)
+- Si une décision est prise ("on gèle X"), ne pas la rouvrir sans demande explicite
+
+---
+
+## 📁 Commits de la session
+
+```
+git commit -m "fix: corrections diverses (Cal.com, fautes orthographe, H2 SEO, footer 2026)"
+git commit -m "feat: ajout Cloudflare Web Analytics + mise à jour politique RGPD"
+git commit -m "feat: Cloudflare Web Analytics + footer FB propre (Instagram retiré, icône SVG officielle)"
+```
+
+*Note : selon le rythme de push de Vince, ces commits peuvent être regroupés en 1 ou 2 push.*
+
+---
+
+## 📋 État actuel du projet (fin session 10)
+
+### Fichiers modifiés cette session
+- `index.html` — Sprint 1 (8 corrections) + Cloudflare snippet + footer FB (Instagram retiré, icône SVG)
+- `mentions-legales.html` — Cloudflare snippet
+- `politique-confidentialite.html` — Cloudflare snippet + réécriture §2/§7 + nouveau §8 + renumérotation
+
+### Outils actifs
+- 🟢 Vercel — déploiement auto sur push `main`
+- 🟢 Google Business Profile (`nutrisoins.be@gmail.com`)
+- 🟢 Google Search Console
+- 🟢 **Cloudflare Web Analytics** (NOUVEAU) — token `8d81dd2ad83443f589fc4e85743e0654`
+- 🟡 Cal.com basculé sur compte `nutrisoins` (dans le code, côté dashboard Cal.com à vérifier)
+- 🟢 Facebook page (accès partiel Vince) — sujet fermé côté backlog actif
+
+### Diagnostic global — chantiers cartographiés
+
+Le diagnostic complet a identifié environ **30 améliorations** réparties en 5 sprints. Le détail complet et l'ordre de priorité sont dans le `journal_condense.md` — section "Backlog d'améliorations identifiées".
+
+---
+
+## 🚫 Sujets fermés explicitement côté utilisateur
+
+- **Facebook (réglages page)** : "Le nécessaire a été fait avec Michèle". Ne pas relancer.
+- **Instagram** : compte fermé / Michèle ne maîtrise pas — retiré du footer. Ne pas relancer.
+
+---
+
+## 🚀 Prochaines étapes (session 11)
+
+Au choix selon l'envie/disponibilité de l'utilisateur — par ordre d'impact identifié :
+
+1. **Sprint 3 — Conversion** : afficher les prix + hiérarchiser les CTA + personnaliser confirmation formulaire
+2. **Sprint 4 — SEO renforcé** : section Ménopause + FAQ Schema.org + réintégrer périménopause dans meta description
+3. **Sprint 5 — Expansion** : 1er article de blog + pages dédiées par offre + icônes SVG Gemini
+
+**Backlog opérationnel** (peuvent être traités isolément) :
+- Numéro BCE à mettre à jour dans `mentions-legales.html` dès réception
+- Photo de Michèle sur fiche Google Business si elle accepte
+- Numéro de téléphone pro quand disponible
+- Google Workspace + adresse `michele@nutrisoins.be` (~6€/mois)
+- Vérifier nouveau snippet Google sur "coach nutrition Eghezée" (suite session 9)
+- Vérifier la 1ère visite dans Cloudflare Web Analytics (sous 24-48h après push)
+
+---
+
+*Fin de session 10 — Bonne continuation ! 🌿*
