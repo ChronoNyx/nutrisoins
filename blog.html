@@ -702,6 +702,82 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===================== MENU HAMBURGER ===================== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--vert-olive);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(253, 251, 248, 0.98);
+            backdrop-filter: blur(12px);
+            z-index: 99;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .nav-mobile.open { display: flex; }
+
+        .nav-mobile a {
+            text-decoration: none;
+            color: var(--texte);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 4px;
+            transition: color 0.2s;
+            text-align: center;
+        }
+
+        .nav-mobile a:hover { color: var(--ocre); }
+
+        .nav-mobile .btn-rdv-mobile {
+            margin-top: 16px;
+            background: var(--ocre);
+            color: white !important;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 14px 32px !important;
+            border-radius: 5px;
+        }
+
+        .nav-mobile .btn-rdv-mobile:hover { background: var(--ocre-clair); }
+
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 900px) {
             .blog-layout {
@@ -735,8 +811,8 @@
 
             .footer-disclaimer { text-align: center; }
 
-            nav { gap: 2px; }
-            nav a { padding: 8px 10px; font-size: 0.78rem; }
+            nav { display: none; }
+            .hamburger { display: flex; }
         }
 
         @media (max-width: 600px) {
@@ -765,7 +841,20 @@
         <a href="blog.html" class="active">Blog</a>
         <a href="index.html#contact" class="btn-rdv">Prendre RDV</a>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
 </header>
+
+<!-- Menu mobile -->
+<nav class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Menu principal">
+    <a href="index.html#methode">Ma Méthode</a>
+    <a href="index.html#offres">Mes Offres</a>
+    <a href="index.html#apropos">À propos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="https://cal.com/nutrisoins/bilan-initial" target="_blank" class="btn-rdv-mobile">Prendre RDV</a>
+</nav>
 
 <!-- ===================== BLOG HERO ===================== -->
 <section class="blog-hero">
@@ -984,6 +1073,30 @@
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8d81dd2ad83443f589fc4e85743e0654"}'></script>
 <!-- End Cloudflare Web Analytics -->
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+
+    function toggleMenu(open) {
+        hamburger.classList.toggle('open', open);
+        navMobile.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', () => {
+        toggleMenu(!navMobile.classList.contains('open'));
+    });
+
+    navMobile.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+    });
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') toggleMenu(false);
+    });
+</script>
 
 </body>
 </html>
