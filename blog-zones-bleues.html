@@ -3,34 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Blog de NUTRISOINS — Conseils nutrition & bien-être | Michèle</title>
+    <title>Les secrets des Blue Zones : comment cultiver la longévité en bonne santé | NUTRISOINS</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="description" content="Le blog de NUTRISOINS : conseils en nutrition, bien-être et alimentation équilibrée par Michèle, coach en nutrition à Eghezée (Namur).">
+    <meta name="description" content="Découvrez les secrets des Zones Bleues : ces régions du monde où l'on vit centenaire et en pleine santé. Par Michèle, coach en nutrition à Eghezée (Namur).">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Le Blog de NUTRISOINS — Conseils nutrition & bien-être">
-    <meta property="og:description" content="Conseils en nutrition, bien-être et alimentation équilibrée par Michèle, coach en nutrition à Eghezée (Namur).">
+    <meta property="og:title" content="Les secrets des Blue Zones : comment cultiver la longévité en bonne santé">
+    <meta property="og:description" content="Découvrez les secrets des Zones Bleues : ces régions du monde où l'on vit centenaire et en pleine santé. Par Michèle, coach en nutrition à Eghezée (Namur).">
     <meta property="og:image" content="https://nutrisoins.be/coach-nutrition-namur.jpg">
-    <meta property="og:url" content="https://nutrisoins.be/blog.html">
-    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nutrisoins.be/blog-zones-bleues.html">
+    <meta property="og:type" content="article">
     <meta property="og:locale" content="fr_BE">
 
-    <!-- Schema.org Blog -->
+    <!-- Schema.org Article -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "Le Blog de NUTRISOINS",
-      "description": "Conseils en nutrition, bien-être et alimentation équilibrée par Michèle, coach en nutrition à Eghezée (Namur).",
-      "url": "https://nutrisoins.be/blog.html",
+      "@type": "BlogPosting",
+      "headline": "Les secrets des Blue Zones : comment cultiver la longévité en bonne santé",
+      "description": "Découvrez les secrets des Zones Bleues : ces régions du monde où l'on vit centenaire et en pleine santé.",
+      "url": "https://nutrisoins.be/blog-zones-bleues.html",
+      "datePublished": "2026-06-01",
       "author": {
         "@type": "Person",
         "name": "Michèle Renault",
+        "url": "https://nutrisoins.be"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NUTRISOINS",
         "url": "https://nutrisoins.be"
       }
     }
@@ -129,7 +135,6 @@
         }
 
         nav a:hover { color: var(--ocre); }
-
         nav a.active { color: var(--ocre); }
 
         .btn-rdv {
@@ -477,6 +482,35 @@
             font-weight: 700;
         }
 
+        .article-full-body ul {
+            list-style: none;
+            margin: 0 0 22px 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .article-full-body ul li {
+            font-size: 0.97rem;
+            color: var(--texte-doux);
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .article-full-body ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--ocre);
+            opacity: 0.6;
+        }
+
         .article-highlight {
             background: var(--fond-beige);
             border-left: 4px solid var(--ocre);
@@ -499,6 +533,27 @@
             margin-bottom: 6px;
             font-weight: 700;
         }
+
+        /* Exergue — citation mise en valeur */
+        .article-exergue {
+            background: var(--vert-olive);
+            border-radius: 10px;
+            padding: 32px 36px;
+            margin: 36px 0;
+            text-align: center;
+        }
+
+        .article-exergue p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.22rem;
+            font-style: italic;
+            color: white;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .article-exergue p::before { content: '\201C'; color: var(--ocre-clair); }
+        .article-exergue p::after  { content: '\201D'; color: var(--ocre-clair); }
 
         .article-divider {
             width: 60px;
@@ -564,77 +619,6 @@
             line-height: 1.6;
         }
 
-        /* ===================== AUTRES ARTICLES ===================== */
-        .blog-more {
-            margin-top: 48px;
-        }
-
-        .blog-more h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--vert-olive);
-            margin-bottom: 20px;
-            padding-bottom: 14px;
-            border-bottom: 2px solid var(--fond-beige);
-        }
-
-        .blog-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px var(--ombre);
-            border: 1px solid rgba(181,106,58,0.08);
-            padding: 28px 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            text-decoration: none;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-
-        .blog-card:hover {
-            box-shadow: 0 6px 24px rgba(62,75,49,0.16);
-            transform: translateY(-2px);
-        }
-
-        .blog-card-tag {
-            display: inline-block;
-            background: var(--fond-beige);
-            color: var(--ocre);
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 20px;
-            width: fit-content;
-        }
-
-        .blog-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            color: var(--vert-olive);
-            line-height: 1.35;
-        }
-
-        .blog-card p {
-            font-size: 0.88rem;
-            color: var(--texte-doux);
-            line-height: 1.7;
-        }
-
-        .blog-card-meta {
-            font-size: 0.78rem;
-            color: var(--texte-doux);
-            opacity: 0.6;
-        }
-
-        .blog-card-link {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--ocre);
-            margin-top: 4px;
-        }
-
         .article-share {
             display: flex;
             align-items: center;
@@ -673,6 +657,21 @@
             background: var(--vert-olive);
             color: white;
         }
+
+        .article-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--vert-olive);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-bottom: 28px;
+            opacity: 0.75;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        .article-back:hover { opacity: 1; color: var(--ocre); }
 
         /* ===================== FOOTER ===================== */
         footer {
@@ -863,6 +862,9 @@
             .article-full-header h1 { font-size: 1.55rem; }
             .blog-hero h1 { font-size: 2rem; }
 
+            .article-exergue { padding: 24px 22px; }
+            .article-exergue p { font-size: 1.05rem; }
+
             .article-footer-cta {
                 flex-direction: column;
                 align-items: flex-start;
@@ -941,95 +943,107 @@
 
     <!-- ===================== ARTICLE PRINCIPAL ===================== -->
     <main>
+
+        <a href="blog.html" class="article-back">
+            ← Retour au blog
+        </a>
+
         <div class="article-full-wrap">
 
             <!-- EN-TÊTE ARTICLE -->
             <div class="article-full-header">
-                <span class="article-full-tag">À propos de Michèle</span>
-                <h1>Bienvenue chez NUTRISOINS — laissez-moi me présenter</h1>
+                <span class="article-full-tag">Bien-être &amp; Longévité</span>
+                <h1>Les secrets des Blue Zones : comment cultiver la longévité en bonne santé</h1>
                 <div class="article-full-meta">
                     <div class="article-full-author">
                         <div class="article-full-author-avatar">M</div>
                         <span class="article-full-author-name">Michèle Renault</span>
                     </div>
                     <span class="article-meta-dot"></span>
-                    <span class="article-full-date">Mai 2026</span>
+                    <span class="article-full-date">Juin 2026</span>
                     <span class="article-meta-dot"></span>
-                    <span class="article-full-read">8 min de lecture</span>
+                    <span class="article-full-read">7 min de lecture</span>
                 </div>
             </div>
 
             <!-- CORPS ARTICLE -->
             <div class="article-full-body">
 
-                <p class="article-intro">Si vous êtes ici, c'est probablement parce que vous cherchez à vous sentir mieux dans votre corps, à retrouver de l'énergie, ou tout simplement à adopter une alimentation plus sereine et équilibrée. Et si je vous disais que c'est exactement ce qui m'a amenée, moi aussi, dans cette aventure ?</p>
+                <p class="article-intro">Avez-vous déjà imaginé vivre jusqu'à 100 ans, non pas diminué, mais en pleine possession de vos moyens, l'esprit vif et le corps vigoureux ? Ce qui ressemble à un rêve lointain est pourtant une réalité quotidienne dans certaines régions du globe. On les appelle les Zones Bleues — ou Blue Zones.</p>
 
-                <p>Avant de parler de vos objectifs, laissez-moi prendre un moment pour me présenter.</p>
+                <p>Je m'intéresse depuis un bon moment déjà à ce concept fascinant. Ces quelques endroits sur Terre abritent un nombre exceptionnel de centenaires en pleine forme. Et pour tout vous dire, cela me passionne toujours autant ! Ce qui me marque le plus dans leur mode de vie ? <strong>Le but n'est pas simplement de rallonger la vie, mais de vivre le plus longtemps possible en bonne santé.</strong></p>
 
-                <p>Je m'appelle <strong>Michèle Renault</strong>, j'ai 53 ans, je suis maman de deux grands enfants, et j'habite la commune d'Eghezée depuis 1999.</p>
-
-                <p>En parallèle de ma carrière dans le secteur privé — où j'évolue dans la gestion de la qualité — j'ai choisi de lancer une activité complémentaire qui me tient particulièrement à cœur : <strong>coach en nutrition</strong>. Une activité qui n'est pas le fruit du hasard, mais l'aboutissement d'un long cheminement personnel que j'aimerais vous raconter.</p>
+                <p>En tant que coach en nutrition, ma philosophie rejoint naturellement le mode de vie de ces populations. Elles sont pour moi une véritable source d'inspiration : autant pour accompagner celles et ceux que je suis sur ce chemin, que dans mon propre quotidien. Découvrons ensemble les secrets de ces régions et comment nous pouvons, nous aussi, créer les conditions d'une vie épanouie.</p>
 
                 <div class="article-divider"></div>
 
-                <h2>Le déclic : quand la santé personnelle devient une démarche rigoureuse</h2>
+                <h2>Qu'est-ce qu'une Zone Bleue ?</h2>
 
-                <p>Mon intérêt pour la nutrition ne date pas d'hier. Il s'est développé il y a une quinzaine d'années, à la suite de problématiques de santé personnelles qui m'ont amenée à m'intéresser de près à ce que je mettais dans mon assiette. En cherchant des réponses, j'ai compris à quel point notre alimentation et notre hygiène de vie étaient les piliers essentiels de notre bien-être.</p>
+                <p>Le concept des Zones Bleues est né des travaux de démographes et de chercheurs qui ont identifié cinq régions du monde où la concentration de centenaires est exceptionnellement élevée. Dans ces territoires, les habitants vieillissent en résistant de manière spectaculaire aux maladies chroniques occidentales :</p>
 
-                <p>De par mon métier, j'ai naturellement une approche structurée et méthodique. Ce qui n'était au départ qu'une quête personnelle est rapidement devenu une étude approfondie et passionnée. Mon regard s'est élargi progressivement à la santé fonctionnelle et à la nutrition appliquée : le métabolisme, l'importance du microbiote, le lien intestin-cerveau, le rôle du nerf vague, la gestion du stress, le bien-être global.</p>
+                <ul>
+                    <li><strong>Okinawa (Japon)</strong> : l'île de la longévité, où les femmes détiennent les records mondiaux d'espérance de vie en bonne santé.</li>
+                    <li><strong>La Sardaigne (Italie)</strong> : plus précisément la région de l'Ogliastra, célèbre pour sa concentration unique au monde de centenaires masculins.</li>
+                    <li><strong>Ikaria (Grèce)</strong> : une île isolée de la mer Égée où les habitants semblent « oublier de vieillir », conservant souvent une belle vitalité jusqu'à un âge avancé.</li>
+                    <li><strong>Nicoya (Costa Rica)</strong> : une péninsule où l'espérance de vie à 60 ans est parmi les plus élevées au monde, portée par une joie de vivre contagieuse.</li>
+                    <li><strong>Loma Linda (Californie, États-Unis)</strong> : une communauté qui vit en moyenne près de 10 ans de plus que le reste des Américains, portée par une alimentation à dominante végétale, des liens sociaux forts et de vrais temps de repos.</li>
+                </ul>
 
-                <div class="article-highlight">
-                    <strong>Une conviction</strong>
-                    Derrière ces termes parfois intimidants, une conviction simple s'est imposée : notre corps possède un équilibre qu'il suffit souvent de réapprendre à écouter.
-                </div>
+                <h2>Les piliers du quotidien : une affaire d'environnement, pas de volonté</h2>
 
-                <p>Pendant des années, je me suis formée de manière autonome et continue. Je nourris régulièrement mes connaissances en suivant les travaux, conférences et podcasts de professionnels reconnus dans le domaine de la micronutrition — Jean-Paul Curtay, Vincent Renaud, Véronique Liesse, Anthony Berthou, parmi d'autres.</p>
-
-                <h2>Une formation certifiante pour adosser la passion à la compétence</h2>
-
-                <p>Puis j'ai senti le besoin d'aller plus loin : structurer ces connaissances, les valider, et enfin les inscrire dans un cadre professionnel reconnu. C'est là que j'ai découvert puis suivi le cursus <strong>Coach in Nutrition du réseau Newtrition Coach</strong>. Cette formation complète intègre les aspects physiologiques de la nutrition, mais aussi — et c'est essentiel — un volet de coaching mental.</p>
-
-                <p>Ce que je savais d'instinct, ce module lui a donné un cadre : <strong>on ne change pas durablement son alimentation par la seule volonté ou la connaissance</strong>. C'est un cheminement émotionnel et comportemental, qui mérite d'être accompagné avec patience.</p>
-
-                <h2>Ma philosophie : ni régime, ni privation, ni effet yo-yo</h2>
-
-                <p>Ma philosophie de coaching est à l'opposé des régimes restrictifs et des modèles rigides. Pas de solutions miracles, pas d'effet yo-yo qui fatigue le corps autant que l'esprit.</p>
-
-                <p>Chaque personne est unique. Si mon expérience m'a appris une chose, c'est qu'il n'existe pas de solution universelle : ce qui m'a aidée, moi, était taillé pour moi. Voilà pourquoi je construis des <strong>accompagnements entièrement personnalisés</strong>, adaptés à votre rythme de vie, à vos besoins, à votre métabolisme — et à votre histoire.</p>
-
-                <h2>Qualité et déontologie : au-delà des étiquettes, la compétence</h2>
-
-                <p>On lit parfois dans les médias des mises en garde tout à fait légitimes sur le monde de la nutrition. Il est vrai que derrière les titres de « coach » ou de « nutritionniste », on trouve parfois le meilleur comme le moins sérieux, ce qui peut pousser à la méfiance.</p>
-
-                <p>En tant que professionnelle de la gestion de la qualité, je partage entièrement cette exigence de rigueur. Votre santé ne doit jamais faire l'objet d'approximations ou de conseils improvisés.</p>
+                <p>Ce qui m'a frappée en m'intéressant à ces régions, c'est qu'on n'y trouve ni volonté de fer, ni gènes en or, ni privation. La longévité n'y est pas un combat : elle découle d'habitudes si bien ancrées qu'elles ne demandent presque aucun effort. Quatre d'entre elles reviennent partout.</p>
 
                 <div class="article-highlight">
-                    <strong>Ma conviction</strong>
-                    La véritable compétence se mesure à la structure des formations suivies, à une mise à jour permanente des connaissances scientifiques, et surtout à une éthique professionnelle stricte. Choisir un professionnel de confiance, c'est analyser son parcours, questionner sa méthode, et s'assurer qu'il s'appuie sur des données physiologiques validées.
+                    <strong>Bouger sans y penser</strong>
+                    Pas de salle de sport ni de programme intensif. On marche pour aller au marché, on jardine, on rend visite à un voisin. Le mouvement fait simplement partie de la journée — et c'est précisément ce qui le rend tenable toute une vie.
                 </div>
 
-                <h2>Pas tout à fait débutante, mais officiellement à mes débuts</h2>
+                <div class="article-highlight">
+                    <strong>Manger vrai</strong>
+                    L'assiette fait la part belle aux produits de la terre : légumes, légumineuses, herbes du jardin, bonnes graisses. Rien de transformé, rien de compliqué, et le plus souvent, on mange à plusieurs.
+                </div>
 
-                <p>Avant même de structurer officiellement cette activité, j'ai eu l'occasion d'accompagner quelques proches de manière strictement privée et bénévole. Voir des résultats concrets et encourageants — sur la gestion du poids, le regain d'énergie, le retour d'un mieux-être au quotidien — a été une magnifique confirmation que cette voie était la bonne.</p>
+                <div class="article-highlight">
+                    <strong>Ne jamais être seul</strong>
+                    C'est sans doute le pilier qu'on oublie le plus, et pourtant. Famille proche, cercle d'amis fidèles, voisinage : ce tissu de liens agit comme un vrai rempart contre le stress et la solitude.
+                </div>
 
-                <p>Aujourd'hui, je franchis le pas et je structure cet accompagnement dans un cadre professionnel, certifié et encadré par le réseau Newtrition Coach. Mon objectif : mettre ma rigueur, mon écoute et mes compétences à votre service pour vous donner les clés d'une santé durable.</p>
+                <div class="article-highlight">
+                    <strong>S'autoriser à ralentir</strong>
+                    Faire la sieste, prendre le temps de partager un bon repas, ne rien faire sans pour autant culpabiliser. Ces respirations régulières apaisent les tensions accumulées — et tout le corps en profite.
+                </div>
 
-                <p>Je vous accueille dans mon cabinet à Eghezée, à quinze minutes de Namur, et je propose également des consultations en ligne si vous avez des difficultés à vous déplacer ou si vous habitez plus loin.</p>
+                <h2>L'approche NUTRISOINS : faire entrer les Zones Bleues dans votre quotidien</h2>
+
+                <p>En tant que coach en nutrition, je refuse d'envisager la santé sous le prisme de la frustration. Mon rôle ne s'arrête pas à la « perte de poids » : ma vraie mission, c'est de vous aider à ancrer, jour après jour, des habitudes qui deviennent peu à peu des réflexes. Des choix simples qui vous permettent de croquer la vie à pleines dents et de préserver votre capital santé le plus longtemps possible.</p>
+
+                <p>Et la bonne nouvelle, c'est que ces quatre piliers, nous pouvons les réintroduire ensemble, dans votre quotidien à vous.</p>
+
+                <p><strong>Côté assiette</strong>, nous réapprenons à faire une vraie place aux produits frais, locaux et de saison, beaucoup de végétaux et des bonnes protéines, sans jamais sacrifier le plaisir de la table. Et nous prenons le temps de réécouter les signaux de votre corps, pour retrouver une digestion paisible et un poids de forme qui dure.</p>
+
+                <p><strong>Pour le mouvement</strong>, nul besoin de devenir une athlète : une marche de dix minutes après le repas, quelques trajets à pied, et le corps se remet doucement en route.</p>
+
+                <p>Reste ce qui compte peut-être le plus : ralentir, et ne plus avancer seul. Lors d'un programme de suivi, je vous offre un espace pour souffler, relâcher la pression et installer ces petits rituels qui vous protègent. Et ce changement, vous ne le traversez plus en solitaire : ce lien d'accompagnement, c'est un peu, à mon échelle, le tissu de soutien qui fait la force des Zones Bleues.</p>
 
                 <div class="article-divider"></div>
 
-                <h2>Discutons de votre projet</h2>
+                <h2>Et si nous créions une Zone Bleue à Eghezée ?</h2>
 
-                <p>Le site <strong>nutrisoins.be</strong> est désormais en ligne pour vous permettre de découvrir mes services et de réserver directement une séance. Vous pouvez également me suivre sur ma page <strong>Facebook (Michèle Renault — Nutrisoins)</strong> et sur <strong>Instagram (@michelerenault_nutrisoins)</strong> pour faire le plein de conseils au quotidien.</p>
+                <p>Le secret des centenaires ne tient ni dans une pilule magique, ni dans un régime miracle. Il se cache dans la régularité de gestes simples, profondément respectueux de la physiologie humaine — et ces gestes-là, on peut les poser partout. Y compris ici, entre Eghezée et Namur.</p>
 
-                <p>Et vous, quels défis aimeriez-vous relever aujourd'hui pour votre santé ? Rencontrons-nous et discutons-en.</p>
+                <!-- EXERGUE -->
+                <div class="article-exergue">
+                    <p>Une Zone Bleue, au fond, ce n'est pas un lieu sur une carte : c'est une manière de vivre.</p>
+                </div>
 
-                <p style="font-style: italic; color: var(--texte-doux);">À bientôt, <strong style="font-style: normal;">Michèle</strong></p>
+                <p>Et rien ne nous empêche de la faire grandir chez nous, une assiette et une habitude à la fois.</p>
+
+                <p>Que vous souhaitiez simplement faire le point sur vos habitudes le temps d'une séance, ou démarrer un véritable accompagnement avec un bilan complet suivi d'un programme sur 12 semaines, je vous reçois à votre rythme, en présentiel près de Namur ou en ligne. Ensemble, nous analysons vos besoins, ajustons vos repas et posons les bases d'une santé qui s'épanouit dans la durée.</p>
 
                 <!-- CTA ARTICLE -->
                 <div class="article-footer-cta">
                     <p>
-                        <strong>Prêt(e) à passer à l'action ?</strong>
+                        <strong>Créons votre Zone Bleue ensemble</strong>
                         Réservez un premier rendez-vous ou posez-moi une question via le formulaire de contact — je vous réponds sous 48h.
                     </p>
                     <a href="https://cal.com/nutrisoins/bilan-initial" target="_blank" rel="noopener noreferrer" class="article-footer-cta-btn">Prendre rendez-vous →</a>
@@ -1038,33 +1052,20 @@
                 <!-- PARTAGE -->
                 <div class="article-share">
                     <span>Partager</span>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://nutrisoins.be/blog.html" target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Partager sur Facebook">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://nutrisoins.be/blog-zones-bleues.html" target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Partager sur Facebook">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                         Facebook
                     </a>
-                    <button class="share-btn" onclick="navigator.clipboard.writeText('https://nutrisoins.be/blog.html'); this.textContent='✓ Copié !'; setTimeout(()=>{ this.innerHTML='Copier le lien'; },2000);" aria-label="Copier le lien">
+                    <button class="share-btn" onclick="navigator.clipboard.writeText('https://nutrisoins.be/blog-zones-bleues.html'); this.textContent='✓ Copié !'; setTimeout(()=>{ this.innerHTML='Copier le lien'; },2000);" aria-label="Copier le lien">
                         Copier le lien
                     </button>
                 </div>
 
                 <!-- DISCLAIMER -->
-                <p class="article-disclaimer">Cet article reflète le parcours personnel et la démarche professionnelle de Michèle. Le coaching en nutrition est une démarche d'accompagnement qui ne se substitue en aucun cas à un avis médical ou à un suivi par un professionnel de santé. En cas de pathologie, de traitement en cours ou de doute, parlez-en à votre médecin.</p>
+                <p class="article-disclaimer">Le coaching en nutrition est une démarche de bien-être : il ne remplace ni un avis ni un suivi médical. En cas de pathologie ou de traitement en cours, parlez-en à votre médecin.</p>
 
             </div>
         </div>
-
-        <!-- AUTRES ARTICLES -->
-        <section class="blog-more">
-            <h2>Lire aussi</h2>
-            <a href="blog-zones-bleues.html" class="blog-card">
-                <span class="blog-card-tag">Bien-être &amp; Longévité</span>
-                <h3>Les secrets des Blue Zones : comment cultiver la longévité en bonne santé</h3>
-                <p>Ces régions du monde où l'on vit centenaire en pleine forme — et comment leurs habitudes simples peuvent inspirer notre quotidien entre Eghezée et Namur.</p>
-                <span class="blog-card-meta">Juin 2026 · 7 min de lecture</span>
-                <span class="blog-card-link">Lire l'article →</span>
-            </a>
-        </section>
-
     </main>
 
     <!-- ===================== SIDEBAR ===================== -->
@@ -1086,15 +1087,29 @@
         <div class="sidebar-card">
             <h3>Thèmes abordés</h3>
             <div class="sidebar-tags">
-                <span class="sidebar-tag">Mon parcours</span>
+                <span class="sidebar-tag">Longévité</span>
+                <span class="sidebar-tag">Blue Zones</span>
                 <span class="sidebar-tag">Alimentation</span>
+                <span class="sidebar-tag">Bien-être</span>
                 <span class="sidebar-tag">Microbiote</span>
                 <span class="sidebar-tag">Périménopause</span>
                 <span class="sidebar-tag">Équilibre</span>
-                <span class="sidebar-tag">Bien-être</span>
                 <span class="sidebar-tag">Coaching</span>
-                <span class="sidebar-tag">Énergie</span>
             </div>
+        </div>
+
+        <!-- LIRE AUSSI -->
+        <div class="sidebar-card">
+            <h3>Lire aussi</h3>
+            <a href="blog.html" style="display:flex;gap:12px;text-decoration:none;align-items:flex-start;">
+                <div style="flex-shrink:0;width:48px;height:48px;border-radius:8px;background:var(--fond-beige);display:flex;align-items:center;justify-content:center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ocre)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <div>
+                    <p style="font-size:0.82rem;font-weight:700;color:var(--vert-olive);margin:0 0 4px;line-height:1.3;">Bienvenue chez NUTRISOINS — laissez-moi me présenter</p>
+                    <p style="font-size:0.75rem;color:var(--texte-doux);margin:0;opacity:0.7;">Mai 2026 · 8 min</p>
+                </div>
+            </a>
         </div>
 
         <!-- CTA SIDEBAR -->
